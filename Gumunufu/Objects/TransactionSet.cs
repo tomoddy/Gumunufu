@@ -15,14 +15,17 @@
         /// </summary>
         internal List<string> Categories { get; set; }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="transactions">List of transaction</param>
         internal TransactionSet(List<Transaction> transactions)
         {
             // Sort transactions by date
-            Transactions = transactions.OrderBy(x => x.Date).ToList();
+            Transactions = transactions.OrderBy(t => t.Date).ToList();
 
             // Get non null, distinct cateogies sorted alphabetically
-            Categories = Transactions.Where(x => x.Category is not null).Select(x => x.Category).Distinct().Cast<string>().ToList();
-            Categories.Sort();
+            Categories = Transactions.Where(t => t.Category is not null).OrderBy(t => t.Category).Select(t => t.Category).Distinct().Cast<string>().ToList();
         }
 
         /// <summary>

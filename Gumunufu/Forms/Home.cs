@@ -1,4 +1,5 @@
 using Gumunufu.Helpers;
+using Gumunufu.Helpers.Colour;
 using Gumunufu.Objects;
 using System.Globalization;
 
@@ -9,6 +10,21 @@ namespace Gumunufu.Forms
     /// </summary>
     public partial class Home : Form
     {
+        /// <summary>
+        /// Month label
+        /// </summary>
+        private const string MONTH = "Month";
+
+        /// <summary>
+        /// Total label
+        /// </summary>
+        private const string TOTAL = "Total";
+
+        /// <summary>
+        /// Currency cell format
+        /// </summary>
+        private const string CELL_FORMAT = "c2";
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -36,25 +52,26 @@ namespace Gumunufu.Forms
         private void PopulateTable(TransactionSet transactionSet)
         {
             // Add month header
-            HomeTable.Columns.Add("Month", "Month");
+            HomeTable.Columns.Add(MONTH, MONTH);
 
             // Add category headers
             foreach (string? category in transactionSet.Categories)
             {
                 int categoryIndex = HomeTable.Columns.Add(category, category);
-                HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = "c2";
+                HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = CELL_FORMAT;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
 
             // Add total header
-            int totalIndex = HomeTable.Columns.Add("Total", "Total");
-            HomeTable.Columns[totalIndex].DefaultCellStyle.Format = "c2";
+            int totalIndex = HomeTable.Columns.Add(TOTAL, TOTAL);
+            HomeTable.Columns[totalIndex].DefaultCellStyle.Format = CELL_FORMAT;
             HomeTable.Columns[totalIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             HomeTable.Columns[totalIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             // Iterate through months
             List<DateTime> months = GetRowLabels(Config.StartDate);
+            List<float> monthTotal = new();
             foreach (DateTime month in months)
             {
                 // Create new row
@@ -67,15 +84,24 @@ namespace Gumunufu.Forms
                 // Add category totals
                 foreach (string category in transactionSet.Categories)
                 {
+                    // Create cell and add to row
                     CellData cellData = transactionSet.GetCellData(month, category);
-                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = cellData.Total, Tag = cellData.Transactions });
+                    DataGridViewCell newCell = new DataGridViewTextBoxCell { Value = cellData.Total, Tag = cellData };
+                    newRow.Cells.Add(newCell);
+
+                    // Add total to row total and month total list
                     total += cellData.Total;
+                    monthTotal.Add(cellData.Total);
                 }
 
                 // Add total and add row to table
                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = total });
                 HomeTable.Rows.Add(newRow);
             }
+
+            // Sort month total and colour cells
+            monthTotal.Sort();
+            ColourCells(transactionSet.Categories, new ColourCalculator(monthTotal.First(), monthTotal.Last()));
 
             // Resize columns
             HomeTable.AutoResizeColumns();
@@ -102,6 +128,18 @@ namespace Gumunufu.Forms
 
             // Return list
             return retVal;
+        }
+
+        /// <summary>
+        /// Colour cells
+        /// </summary>
+        /// <param name="categories">List of categories</param>
+        /// <param name="calculator">Colour calculator</param>
+        private void ColourCells(List<string> categories, ColourCalculator calculator)
+        {
+            foreach (DataGridViewRow row in HomeTable.Rows)
+                foreach (string category in categories)
+                    row.Cells[category].Style.BackColor = calculator.GetColour(row.Cells[category].Tag);
         }
     }
 }

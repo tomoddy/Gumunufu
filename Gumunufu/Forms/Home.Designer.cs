@@ -34,6 +34,10 @@
             // 
             // HomeTable
             // 
+            this.HomeTable.AllowUserToAddRows = false;
+            this.HomeTable.AllowUserToDeleteRows = false;
+            this.HomeTable.AllowUserToResizeColumns = false;
+            this.HomeTable.AllowUserToResizeRows = false;
             this.HomeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HomeTable.Location = new System.Drawing.Point(12, 12);
             this.HomeTable.Name = "HomeTable";
