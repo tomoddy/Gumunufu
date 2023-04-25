@@ -85,7 +85,7 @@ namespace Gumunufu.Forms
                 {
                     // Create cell and add to row
                     CellData cellData = transactionSet.GetCellData(month, category);
-                    DataGridViewCell newCell = new DataGridViewTextBoxCell { Value = cellData.Total, Tag = cellData };
+                    DataGridViewCell newCell = new DataGridViewTextBoxCell { Value = (int)cellData.Total != 0 ? cellData.Total : string.Empty, Tag = cellData };
                     newRow.Cells.Add(newCell);
 
                     // Add total to row total and month total list

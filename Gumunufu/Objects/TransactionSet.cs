@@ -26,6 +26,10 @@
 
             // Get non null, distinct cateogies sorted alphabetically
             Categories = Transactions.Where(t => t.Category is not null).OrderBy(t => t.Category).Select(t => t.Category).Distinct().Cast<string>().ToList();
+
+            // Check if config option overrides column selection
+            if (Categories.All(Config.ColumnOrder.Contains))
+                Categories = Config.ColumnOrder;
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Gumunufu.Helpers
+namespace Gumunufu
 {
     /// <summary>
     /// Config
@@ -49,5 +49,10 @@ namespace Gumunufu.Helpers
         /// Start date
         /// </summary>
         public static DateTime StartDate => Get<DateTime>("StartDate", DateTime.TryParse);
+
+        /// <summary>
+        /// Column order
+        /// </summary>
+        public static List<string> ColumnOrder => Get("ColumnOrder").Split(',').ToList();
     }
 }
