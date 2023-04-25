@@ -1,6 +1,6 @@
 ﻿using Gumunufu.Objects;
 
-namespace Gumunufu.Helpers.Colour
+namespace Gumunufu.Helpers
 {
     /// <summary>
     /// Colour calculator
