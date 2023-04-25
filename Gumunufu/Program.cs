@@ -1,3 +1,5 @@
+using Gumunufu.Forms;
+
 namespace Gumunufu
 {
     internal static class Program

@@ -1,4 +1,4 @@
-﻿namespace Gumunufu
+﻿namespace Gumunufu.Forms
 {
     partial class Home
     {
@@ -28,12 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.HomeTable = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // HomeTable
+            // 
+            this.HomeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HomeTable.Location = new System.Drawing.Point(12, 12);
+            this.HomeTable.Name = "HomeTable";
+            this.HomeTable.RowHeadersWidth = 62;
+            this.HomeTable.RowTemplate.Height = 33;
+            this.HomeTable.Size = new System.Drawing.Size(2523, 1203);
+            this.HomeTable.TabIndex = 0;
+            // 
+            // Home
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(2547, 1227);
+            this.Controls.Add(this.HomeTable);
+            this.Name = "Home";
+            this.Text = "Gumunufu";
+            this.Load += new System.EventHandler(this.Home_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private DataGridView HomeTable;
     }
 }

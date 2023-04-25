@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using CsvHelper.Configuration;
 using Gumunufu.Objects;
 using System.Globalization;
 
@@ -30,8 +31,9 @@ namespace Gumunufu.Helpers
         internal List<Transaction> GetTransactions()
         {
             using StreamReader streamReader = new(Path);
-            using CsvReader csvReader = new(streamReader, CultureInfo.InvariantCulture);
+            using CsvReader csvReader = new(streamReader, CultureInfo.CurrentCulture);
             csvReader.Context.RegisterClassMap<DataReaderMap>();
+            csvReader.Context.TypeConverterOptionsCache.GetOptions<string>().NullValues.Add("");
             return csvReader.GetRecords<Transaction>().ToList();
         }
     }
