@@ -93,7 +93,11 @@ namespace Gumunufu.Forms
             }
         }
 
-
+        /// <summary>
+        /// Check box change event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
         private void CategoriseNewCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CategoriseListView.Enabled = !CategoriseNewCheckBox.Checked;
