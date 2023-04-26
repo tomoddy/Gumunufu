@@ -27,6 +27,11 @@ namespace Gumunufu.Forms
         private const int FORM_MARGIN = 200;
 
         /// <summary>
+        /// CSV file dialog format
+        /// </summary>
+        private const string CSV_FILTER = "CSV Files (*.csv)|*.csv";
+
+        /// <summary>
         /// Currency cell format
         /// </summary>
         public const string CURRENCY_FORMAT = "c2";
@@ -106,6 +111,26 @@ namespace Gumunufu.Forms
             {
                 HomeMenuStrip.Items["HomeMenuStripCategorise"].Enabled = false;
                 HomeMenuStrip.Items["HomeMenuStripCategorise"].Text = "Categorise";
+            }
+        }
+
+        /// <summary>
+        /// Insert from lloyds file click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripInsertFromFileLloyds_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new()
+            {
+                Filter = CSV_FILTER
+            };
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                TransactionSet.Transactions.AddRange(FileImport.LloydsImport(fileDialog.FileName));
+                Client.UpdateTransactions(TransactionSet);
+                Home_Load(sender, e);
             }
         }
 

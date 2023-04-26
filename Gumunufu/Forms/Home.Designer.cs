@@ -32,6 +32,7 @@
             this.HomeMenuStrip = new System.Windows.Forms.MenuStrip();
             this.HomeMenuStripInsert = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripInsertFromFileLloyds = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertManual = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripCategorise = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).BeginInit();
@@ -79,14 +80,23 @@
             // 
             // HomeMenuStripInsertFromFile
             // 
+            this.HomeMenuStripInsertFromFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HomeMenuStripInsertFromFileLloyds});
             this.HomeMenuStripInsertFromFile.Name = "HomeMenuStripInsertFromFile";
-            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(187, 34);
+            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripInsertFromFile.Text = "From File";
+            // 
+            // HomeMenuStripInsertFromFileLloyds
+            // 
+            this.HomeMenuStripInsertFromFileLloyds.Name = "HomeMenuStripInsertFromFileLloyds";
+            this.HomeMenuStripInsertFromFileLloyds.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripInsertFromFileLloyds.Text = "Lloyds";
+            this.HomeMenuStripInsertFromFileLloyds.Click += new System.EventHandler(this.HomeMenuStripInsertFromFileLloyds_Click);
             // 
             // HomeMenuStripInsertManual
             // 
             this.HomeMenuStripInsertManual.Name = "HomeMenuStripInsertManual";
-            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(187, 34);
+            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripInsertManual.Text = "Manual";
             this.HomeMenuStripInsertManual.Click += new System.EventHandler(this.HomeMenuStripInsertManual_Click);
             // 
@@ -95,6 +105,7 @@
             this.HomeMenuStripCategorise.Name = "HomeMenuStripCategorise";
             this.HomeMenuStripCategorise.Size = new System.Drawing.Size(112, 29);
             this.HomeMenuStripCategorise.Text = "Categorise";
+            this.HomeMenuStripCategorise.Click += new System.EventHandler(this.HomeMenuStripCategorise_Click);
             // 
             // Home
             // 
@@ -123,5 +134,6 @@
         private ToolStripMenuItem HomeMenuStripInsertFromFile;
         private ToolStripMenuItem HomeMenuStripInsertManual;
         private ToolStripMenuItem HomeMenuStripCategorise;
+        private ToolStripMenuItem HomeMenuStripInsertFromFileLloyds;
     }
 }
