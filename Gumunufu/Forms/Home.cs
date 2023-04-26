@@ -110,6 +110,22 @@ namespace Gumunufu.Forms
         }
 
         /// <summary>
+        /// Insert manual click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripInsertManual_Click(object sender, EventArgs e)
+        {
+            ManualAdd manualAdd = new();
+            if (manualAdd.ShowDialog() == DialogResult.OK)
+            {
+                TransactionSet.Transactions.Add(manualAdd.NewTransaction);
+                Client.UpdateTransactions(TransactionSet);
+                Home_Load(sender, e);
+            }
+        }
+
+        /// <summary>
         /// Categorise click event
         /// </summary>
         /// <param name="sender">Sender</param>
@@ -119,23 +135,22 @@ namespace Gumunufu.Forms
             // Categorise unset transactions
             while (TransactionSet.UncategoriedTransactions.Count > 0)
             {
-                // Show transaction dialog
+                // Create transaction dialog
                 Transaction uncategorisedTransaction = TransactionSet.UncategoriedTransactions.First();
                 Categorise categoriseForm = new(Location, TransactionSet.Categories, ref uncategorisedTransaction);
-                DialogResult result = categoriseForm.ShowDialog();
-
-                // Add new category if option selected by user
-                if(!string.IsNullOrEmpty(categoriseForm.NewCategory))
-                    TransactionSet.Categories.Add(categoriseForm.NewCategory);
 
                 // Move transaction into main list if submitted
-                if (result == DialogResult.OK)
+                if (categoriseForm.ShowDialog() == DialogResult.OK)
                 {
                     TransactionSet.UncategoriedTransactions.Remove(uncategorisedTransaction);
                     TransactionSet.CategorisedTransactions.Add(uncategorisedTransaction);
                 }
                 else
                     break;
+
+                // Add new category if option selected by user
+                if (!string.IsNullOrEmpty(categoriseForm.NewCategory))
+                    TransactionSet.Categories.Add(categoriseForm.NewCategory);
             }
 
             // Update database
