@@ -1,1 +1,5 @@
 # Gumunufu
+
+To Add:
+* Filtering of all transactions
+* Colouring of cells in pop-out windows
