@@ -25,5 +25,15 @@
             Total = total;
             Transactions = transactions;
         }
+
+        /// <summary>
+        /// Total constructor
+        /// </summary>
+        /// <param name="total">Total</param>
+        internal CellData(float total)
+        {
+            Total = total;
+            Transactions = new List<Transaction>();
+        }
     }
 }

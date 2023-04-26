@@ -215,12 +215,12 @@ namespace Gumunufu.Forms
 
             // Iterate through months
             List<DateTime> months = GetRowLabels(Config.StartDate);
-            List<float> monthTotal = new();
+            List<float> cellValues = new();
             foreach (DateTime month in months)
             {
                 // Create new row
                 DataGridViewRow newRow = new();
-                float total = 0;
+                float rowTotal = 0;
 
                 // Add date
                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = month.ToString("MMM yyyy"), Tag = month });
@@ -234,18 +234,22 @@ namespace Gumunufu.Forms
                     newRow.Cells.Add(newCell);
 
                     // Add total to row total and month total list
-                    total += cellData.Total;
-                    monthTotal.Add(cellData.Total);
+                    rowTotal += cellData.Total;
+                    cellValues.Add(cellData.Total);
                 }
 
                 // Add total and add row to table
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = total });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = rowTotal, Tag = new CellData(rowTotal) });
+                cellValues.Add(rowTotal);
                 HomeTable.Rows.Add(newRow);
             }
 
             // Sort month total and colour cells
-            monthTotal.Sort();
-            ColourCells(TransactionSet.Categories, new ColourCalculator(monthTotal.First(), monthTotal.Last()));
+            cellValues.Sort();
+            ColourCells(TransactionSet.Categories, new ColourCalculator(cellValues.First(), cellValues.Last()));
+
+            // Colour total column
+            ColourCells(new List<string> { TOTAL }, new ColourCalculator(cellValues.First(), cellValues.Last()));
 
             // Resize columns
             HomeTable.AutoResizeColumns();
