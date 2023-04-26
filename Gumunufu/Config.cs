@@ -100,7 +100,12 @@ namespace Gumunufu
         /// <summary>
         /// Currency cell format
         /// </summary>
-        public const string CURRENCY_FORMAT = "c2";
+        public const string CURRENCY_FORMAT = "c2"; 
+
+        /// <summary>
+        /// Search query
+        /// </summary>
+        public const string SEARCH_QUERY = "https://www.google.com/search?q=";
 
         #endregion
 
@@ -114,7 +119,12 @@ namespace Gumunufu
         /// <summary>
         /// Database path
         /// </summary>
-        public static string Path => Get("Path");
+        public static string DatabasePath => Get("DatabasePath");
+
+        /// <summary>
+        /// Browser path
+        /// </summary>
+        public static string BrowserPath => Get("BrowserPath");
 
         /// <summary>
         /// Start date

@@ -1,4 +1,5 @@
 ﻿using Gumunufu.Objects;
+using System.Diagnostics;
 
 namespace Gumunufu.Forms
 {
@@ -69,6 +70,17 @@ namespace Gumunufu.Forms
             foreach (string category in Categories)
                 CategoriseListView.Items.Add(category);
             CategoriseListView.EndUpdate();
+        }
+
+        /// <summary>
+        /// Name label link clicked
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void CategoriseNameLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LinkLabel linkLabel = (LinkLabel)sender;
+            Process.Start(Config.BrowserPath, $"{Config.SEARCH_QUERY}{linkLabel.Text}");
         }
 
         /// <summary>

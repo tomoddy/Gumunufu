@@ -28,7 +28,7 @@ namespace Gumunufu.Forms
         {
             InitializeComponent();
             Icon = new Icon(Config.Icon);
-            Client = new(Config.Path);
+            Client = new(Config.DatabasePath);
             TransactionSet = new(Client.GetTransactions());
         }
 
