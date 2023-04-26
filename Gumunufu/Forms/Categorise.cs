@@ -41,6 +41,7 @@ namespace Gumunufu.Forms
         public Categorise(Point baseLocation, List<string> categories, ref Transaction transaction)
         {
             InitializeComponent();
+            Icon = new Icon(Config.Icon);
             BaseLocation = baseLocation;
             Categories = categories;
             Transaction = transaction;

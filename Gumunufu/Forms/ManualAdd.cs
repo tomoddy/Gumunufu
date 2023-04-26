@@ -20,6 +20,7 @@ namespace Gumunufu.Forms
         public ManualAdd()
         {
             InitializeComponent();
+            Icon = new Icon(Config.Icon);
             NewTransaction = new Transaction();
         }
 

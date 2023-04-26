@@ -52,6 +52,7 @@ namespace Gumunufu.Forms
         public Home()
         {
             InitializeComponent();
+            Icon = new Icon(Config.Icon);
             Client = new(Config.Path);
             TransactionSet = new(Client.GetTransactions());
         }

@@ -149,7 +149,7 @@
             this.Controls.Add(this.ManualAddNameLabel);
             this.Controls.Add(this.ManualAddDateLabel);
             this.Name = "ManualAdd";
-            this.Text = "ManualAdd";
+            this.Text = "Add Transaction";
             this.Load += new System.EventHandler(this.ManualAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

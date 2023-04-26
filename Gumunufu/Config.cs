@@ -46,6 +46,11 @@ namespace Gumunufu
         #endregion
 
         /// <summary>
+        /// Icon path
+        /// </summary>
+        public static string Icon => Get("Icon");
+
+        /// <summary>
         /// Database path
         /// </summary>
         public static string Path => Get("Path");

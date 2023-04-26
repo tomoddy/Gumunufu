@@ -111,14 +111,14 @@
             this.CategoriseListView.Location = new System.Drawing.Point(12, 128);
             this.CategoriseListView.MultiSelect = false;
             this.CategoriseListView.Name = "CategoriseListView";
-            this.CategoriseListView.Size = new System.Drawing.Size(325, 191);
+            this.CategoriseListView.Size = new System.Drawing.Size(351, 194);
             this.CategoriseListView.TabIndex = 7;
             this.CategoriseListView.UseCompatibleStateImageBehavior = false;
             this.CategoriseListView.View = System.Windows.Forms.View.SmallIcon;
             // 
             // CategoriseSubmit
             // 
-            this.CategoriseSubmit.Location = new System.Drawing.Point(230, 325);
+            this.CategoriseSubmit.Location = new System.Drawing.Point(251, 325);
             this.CategoriseSubmit.Name = "CategoriseSubmit";
             this.CategoriseSubmit.Size = new System.Drawing.Size(112, 34);
             this.CategoriseSubmit.TabIndex = 8;
@@ -131,7 +131,7 @@
             this.CategoriseInput.Enabled = false;
             this.CategoriseInput.Location = new System.Drawing.Point(12, 328);
             this.CategoriseInput.Name = "CategoriseInput";
-            this.CategoriseInput.Size = new System.Drawing.Size(207, 31);
+            this.CategoriseInput.Size = new System.Drawing.Size(233, 31);
             this.CategoriseInput.TabIndex = 9;
             // 
             // CategoriseNewCheckBox
@@ -149,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 371);
+            this.ClientSize = new System.Drawing.Size(375, 371);
             this.Controls.Add(this.CategoriseNewCheckBox);
             this.Controls.Add(this.CategoriseInput);
             this.Controls.Add(this.CategoriseSubmit);
@@ -162,7 +162,7 @@
             this.Controls.Add(this.CategoriseDateLabel);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Categorise";
-            this.Text = "Categorise";
+            this.Text = "Categorise Transaction";
             this.Load += new System.EventHandler(this.Categorise_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
