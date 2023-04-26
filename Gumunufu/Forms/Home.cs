@@ -91,17 +91,6 @@ namespace Gumunufu.Forms
         }
 
         /// <summary>
-        /// Open window with all transactions
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event arguments</param>
-        private void HomeMenuStripViewAll_Click(object sender, EventArgs e)
-        {
-            TransactionView transactionView = new(TransactionSet.Transactions);
-            transactionView.ShowDialog();
-        }
-
-        /// <summary>
         /// Insert from lloyds file click event
         /// </summary>
         /// <param name="sender">Sender</param>
@@ -170,6 +159,39 @@ namespace Gumunufu.Forms
 
             // Reload form
             Home_Load(sender, e);
+        }
+
+        /// <summary>
+        /// Open window with all transactions
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripViewAll_Click(object sender, EventArgs e)
+        {
+            TransactionView transactionView = new(TransactionSet.Transactions);
+            transactionView.ShowDialog();
+        }
+
+        /// <summary>
+        /// Open window with transactions totalled by category
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripViewTotalByCategory_Click(object sender, EventArgs e)
+        {
+            TotalBy totalByCategory = new(Config.CATEGORY, TransactionSet.Transactions);
+            totalByCategory.ShowDialog();
+        }
+
+        /// <summary>
+        /// Open window with transactions totalled by name
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripViewTotalByName_Click(object sender, EventArgs e)
+        {
+            TotalBy totalByCategory = new(Config.NAME, TransactionSet.Transactions);
+            totalByCategory.ShowDialog();
         }
 
         #endregion

@@ -30,13 +30,16 @@
         {
             this.HomeTable = new System.Windows.Forms.DataGridView();
             this.HomeMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.HomeMenuStripView = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsert = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFile = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFileLloyds = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertManual = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripCategorise = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripView = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripViewTotalBy = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripViewTotalByCategory = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripViewTotalByName = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).BeginInit();
             this.HomeMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -71,14 +74,6 @@
             this.HomeMenuStrip.Size = new System.Drawing.Size(924, 35);
             this.HomeMenuStrip.TabIndex = 1;
             this.HomeMenuStrip.Text = "HomeMenuStrip";
-            // 
-            // HomeMenuStripView
-            // 
-            this.HomeMenuStripView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.HomeMenuStripViewAll});
-            this.HomeMenuStripView.Name = "HomeMenuStripView";
-            this.HomeMenuStripView.Size = new System.Drawing.Size(65, 29);
-            this.HomeMenuStripView.Text = "View";
             // 
             // HomeMenuStripInsert
             // 
@@ -118,12 +113,44 @@
             this.HomeMenuStripCategorise.Text = "Categorise";
             this.HomeMenuStripCategorise.Click += new System.EventHandler(this.HomeMenuStripCategorise_Click);
             // 
+            // HomeMenuStripView
+            // 
+            this.HomeMenuStripView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HomeMenuStripViewAll,
+            this.HomeMenuStripViewTotalBy});
+            this.HomeMenuStripView.Name = "HomeMenuStripView";
+            this.HomeMenuStripView.Size = new System.Drawing.Size(65, 29);
+            this.HomeMenuStripView.Text = "View";
+            // 
             // HomeMenuStripViewAll
             // 
             this.HomeMenuStripViewAll.Name = "HomeMenuStripViewAll";
             this.HomeMenuStripViewAll.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripViewAll.Text = "All";
             this.HomeMenuStripViewAll.Click += new System.EventHandler(this.HomeMenuStripViewAll_Click);
+            // 
+            // HomeMenuStripViewTotalBy
+            // 
+            this.HomeMenuStripViewTotalBy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HomeMenuStripViewTotalByCategory,
+            this.HomeMenuStripViewTotalByName});
+            this.HomeMenuStripViewTotalBy.Name = "HomeMenuStripViewTotalBy";
+            this.HomeMenuStripViewTotalBy.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripViewTotalBy.Text = "Total By";
+            // 
+            // HomeMenuStripViewTotalByCategory
+            // 
+            this.HomeMenuStripViewTotalByCategory.Name = "HomeMenuStripViewTotalByCategory";
+            this.HomeMenuStripViewTotalByCategory.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripViewTotalByCategory.Text = "Category";
+            this.HomeMenuStripViewTotalByCategory.Click += new System.EventHandler(this.HomeMenuStripViewTotalByCategory_Click);
+            // 
+            // HomeMenuStripViewTotalByName
+            // 
+            this.HomeMenuStripViewTotalByName.Name = "HomeMenuStripViewTotalByName";
+            this.HomeMenuStripViewTotalByName.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripViewTotalByName.Text = "Name";
+            this.HomeMenuStripViewTotalByName.Click += new System.EventHandler(this.HomeMenuStripViewTotalByName_Click);
             // 
             // Home
             // 
@@ -155,5 +182,8 @@
         private ToolStripMenuItem HomeMenuStripInsertFromFileLloyds;
         private ToolStripMenuItem HomeMenuStripView;
         private ToolStripMenuItem HomeMenuStripViewAll;
+        private ToolStripMenuItem HomeMenuStripViewTotalBy;
+        private ToolStripMenuItem HomeMenuStripViewTotalByCategory;
+        private ToolStripMenuItem HomeMenuStripViewTotalByName;
     }
 }
