@@ -42,8 +42,8 @@ namespace Gumunufu.Helpers
         /// <summary>
         /// Update database
         /// </summary>
-        /// <param name="transactions">List of transactions</param>
-        internal void UpdateTransactions(List<Transaction> transactions)
+        /// <param name="transactionSet">Transaction set</param>
+        internal void UpdateTransactions(TransactionSet transactionSet)
         {
             // Copy database to new temp file
             string extension = Path.GetExtension(DatabasePath);
@@ -55,7 +55,7 @@ namespace Gumunufu.Helpers
             using (CsvWriter csvWriter = new(streamWriter, CultureInfo.CurrentCulture))
             {
                 csvWriter.Context.RegisterClassMap<DataReaderMap>();
-                csvWriter.WriteRecords(transactions);
+                csvWriter.WriteRecords(transactionSet.Transactions);
             }
 
             // Delete old database and rename new database

@@ -11,9 +11,14 @@
         internal List<Transaction> Transactions { get; set; }
 
         /// <summary>
+        /// List of categorised transactions
+        /// </summary>
+        internal List<Transaction> CategorisedTransactions => Transactions.Where(t => t.Category != null).OrderBy(t => t.Date).ToList();
+
+        /// <summary>
         /// Uncategories transactions
         /// </summary>
-        internal List<Transaction> UncategoriedTransactions { get; set; }
+        internal List<Transaction> UncategoriedTransactions => Transactions.Where(t => t.Category is null).ToList();
 
         /// <summary>
         /// List of categories
@@ -26,12 +31,9 @@
         /// <param name="transactions">List of transaction</param>
         internal TransactionSet(List<Transaction> transactions)
         {
-            // Sort transactions by category and date
-            Transactions = transactions.Where(t => t.Category != null).OrderBy(t => t.Date).ToList();
-            UncategoriedTransactions = transactions.Where(t => t.Category is null).ToList();
-
-            // Get non null, distinct cateogies sorted alphabetically
-            Categories = Transactions.Where(t => t.Category is not null).OrderBy(t => t.Category).Select(t => t.Category).Distinct().Cast<string>().ToList();
+            // Set transactions and get non null, distinct cateogies sorted alphabetically
+            Transactions = transactions;
+            Categories = CategorisedTransactions.Where(t => t.Category is not null).OrderBy(t => t.Category).Select(t => t.Category).Distinct().Cast<string>().ToList();
 
             // Check if config option overrides column selection
             if (Categories.All(Config.ColumnOrder.Contains))
@@ -46,7 +48,7 @@
         /// <returns>Cell data</returns>
         internal CellData GetCellData(DateTime period, string category)
         {
-            List<Transaction> transactions = Transactions
+            List<Transaction> transactions = CategorisedTransactions
                 .Where(t => t.Category == category)
                 .Where(t => t.Date.Year == period.Year)
                 .Where(t => t.Date.Month == period.Month).ToList();

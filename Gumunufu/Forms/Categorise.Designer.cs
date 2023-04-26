@@ -36,6 +36,8 @@
             this.CategoriseAmountTagLabel = new System.Windows.Forms.Label();
             this.CategoriseListView = new System.Windows.Forms.ListView();
             this.CategoriseSubmit = new System.Windows.Forms.Button();
+            this.CategoriseInput = new System.Windows.Forms.TextBox();
+            this.CategoriseNewCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // CategoriseDateLabel
@@ -106,17 +108,17 @@
             // 
             // CategoriseListView
             // 
-            this.CategoriseListView.Location = new System.Drawing.Point(17, 105);
+            this.CategoriseListView.Location = new System.Drawing.Point(12, 128);
             this.CategoriseListView.MultiSelect = false;
             this.CategoriseListView.Name = "CategoriseListView";
-            this.CategoriseListView.Size = new System.Drawing.Size(325, 146);
+            this.CategoriseListView.Size = new System.Drawing.Size(325, 191);
             this.CategoriseListView.TabIndex = 7;
             this.CategoriseListView.UseCompatibleStateImageBehavior = false;
             this.CategoriseListView.View = System.Windows.Forms.View.SmallIcon;
             // 
             // CategoriseSubmit
             // 
-            this.CategoriseSubmit.Location = new System.Drawing.Point(230, 262);
+            this.CategoriseSubmit.Location = new System.Drawing.Point(230, 325);
             this.CategoriseSubmit.Name = "CategoriseSubmit";
             this.CategoriseSubmit.Size = new System.Drawing.Size(112, 34);
             this.CategoriseSubmit.TabIndex = 8;
@@ -124,11 +126,32 @@
             this.CategoriseSubmit.UseVisualStyleBackColor = true;
             this.CategoriseSubmit.Click += new System.EventHandler(this.CategoriseSubmit_Click);
             // 
+            // CategoriseInput
+            // 
+            this.CategoriseInput.Enabled = false;
+            this.CategoriseInput.Location = new System.Drawing.Point(12, 328);
+            this.CategoriseInput.Name = "CategoriseInput";
+            this.CategoriseInput.Size = new System.Drawing.Size(207, 31);
+            this.CategoriseInput.TabIndex = 9;
+            // 
+            // CategoriseNewCheckBox
+            // 
+            this.CategoriseNewCheckBox.AutoSize = true;
+            this.CategoriseNewCheckBox.Location = new System.Drawing.Point(12, 93);
+            this.CategoriseNewCheckBox.Name = "CategoriseNewCheckBox";
+            this.CategoriseNewCheckBox.Size = new System.Drawing.Size(155, 29);
+            this.CategoriseNewCheckBox.TabIndex = 10;
+            this.CategoriseNewCheckBox.Text = "New category?";
+            this.CategoriseNewCheckBox.UseVisualStyleBackColor = true;
+            this.CategoriseNewCheckBox.CheckedChanged += new System.EventHandler(this.CategoriseNewCheckBox_CheckedChanged);
+            // 
             // Categorise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 308);
+            this.ClientSize = new System.Drawing.Size(354, 371);
+            this.Controls.Add(this.CategoriseNewCheckBox);
+            this.Controls.Add(this.CategoriseInput);
             this.Controls.Add(this.CategoriseSubmit);
             this.Controls.Add(this.CategoriseListView);
             this.Controls.Add(this.CategoriseAmountTagLabel);
@@ -156,5 +179,7 @@
         private Label CategoriseAmountTagLabel;
         private ListView CategoriseListView;
         private Button CategoriseSubmit;
+        private TextBox CategoriseInput;
+        private CheckBox CategoriseNewCheckBox;
     }
 }

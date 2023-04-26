@@ -117,23 +117,29 @@ namespace Gumunufu.Forms
         private void HomeMenuStripCategorise_Click(object sender, EventArgs e)
         {
             // Categorise unset transactions
-            while(TransactionSet.UncategoriedTransactions.Count > 0)
+            while (TransactionSet.UncategoriedTransactions.Count > 0)
             {
                 // Show transaction dialog
                 Transaction uncategorisedTransaction = TransactionSet.UncategoriedTransactions.First();
                 Categorise categoriseForm = new(Location, TransactionSet.Categories, ref uncategorisedTransaction);
                 DialogResult result = categoriseForm.ShowDialog();
 
+                // Add new category if option selected by user
+                if(!string.IsNullOrEmpty(categoriseForm.NewCategory))
+                    TransactionSet.Categories.Add(categoriseForm.NewCategory);
+
                 // Move transaction into main list if submitted
                 if (result == DialogResult.OK)
                 {
                     TransactionSet.UncategoriedTransactions.Remove(uncategorisedTransaction);
-                    TransactionSet.Transactions.Add(uncategorisedTransaction);
+                    TransactionSet.CategorisedTransactions.Add(uncategorisedTransaction);
                 }
+                else
+                    break;
             }
 
             // Update database
-            Client.UpdateTransactions(TransactionSet.Transactions);
+            Client.UpdateTransactions(TransactionSet);
 
             // Reload form
             Home_Load(sender, e);

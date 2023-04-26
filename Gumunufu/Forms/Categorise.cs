@@ -8,11 +8,6 @@ namespace Gumunufu.Forms
     public partial class Categorise : Form
     {
         /// <summary>
-        /// New item
-        /// </summary>
-        private const string NEW_CATEGORY = "New...";
-
-        /// <summary>
         /// Coorindate offset
         /// </summary>
         private const int OFFSET = 100;
@@ -33,6 +28,11 @@ namespace Gumunufu.Forms
         internal Transaction Transaction { get; set; }
 
         /// <summary>
+        /// Pass back for if new category is added
+        /// </summary>
+        internal string NewCategory { get; set; }
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         /// <param name="baseLocation">Base location of main form</param>
@@ -44,6 +44,7 @@ namespace Gumunufu.Forms
             BaseLocation = baseLocation;
             Categories = categories;
             Transaction = transaction;
+            NewCategory = string.Empty;
         }
 
         /// <summary>
@@ -64,7 +65,6 @@ namespace Gumunufu.Forms
 
             // Load list view
             CategoriseListView.BeginUpdate();
-            CategoriseListView.Items.Add(NEW_CATEGORY);
             foreach (string category in Categories)
                 CategoriseListView.Items.Add(category);
             CategoriseListView.EndUpdate();
@@ -77,14 +77,27 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void CategoriseSubmit_Click(object sender, EventArgs e)
         {
-            string selectedCategory = CategoriseListView.SelectedItems[0].Text;
-            if (selectedCategory == NEW_CATEGORY)
-                throw new NotImplementedException();
+            if (CategoriseNewCheckBox.Checked)
+            {
+                if (!string.IsNullOrEmpty(CategoriseInput.Text))
+                {
+                    Categories.Add(CategoriseInput.Text);
+                    NewCategory = CategoriseInput.Text;
+                    DialogResult = DialogResult.OK;
+                }
+            }
             else
             {
-                Transaction.Category = selectedCategory;
+                Transaction.Category = CategoriseListView.SelectedItems[0].Text;
                 DialogResult = DialogResult.OK;
             }
+        }
+
+
+        private void CategoriseNewCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CategoriseListView.Enabled = !CategoriseNewCheckBox.Checked;
+            CategoriseInput.Enabled = CategoriseNewCheckBox.Checked;
         }
     }
 }
