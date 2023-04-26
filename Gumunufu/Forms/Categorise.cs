@@ -8,31 +8,42 @@ namespace Gumunufu.Forms
     public partial class Categorise : Form
     {
         /// <summary>
+        /// New item
+        /// </summary>
+        private const string NEW_CATEGORY = "New...";
+
+        /// <summary>
+        /// Coorindate offset
+        /// </summary>
+        private const int OFFSET = 100;
+
+        /// <summary>
+        /// Base location
+        /// </summary>
+        private Point BaseLocation { get; set; }
+
+        /// <summary>
         /// List of categories
         /// </summary>
         private List<string> Categories { get; set; }
 
         /// <summary>
-        /// Uncategorised transactions
+        /// Current transaction
         /// </summary>
-        private List<Transaction> UncategorisedTransactions { get; set; }
-
-        /// <summary>
-        /// Categorised transactions
-        /// </summary>
-        internal List<Transaction> CategorisedTransactions { get; set; }
+        internal Transaction Transaction { get; set; }
 
         /// <summary>
         /// Default constructor
         /// </summary>
+        /// <param name="baseLocation">Base location of main form</param>
         /// <param name="categories">Categories</param>
-        /// <param name="uncategorisedTransactions">Uncategorised transactions</param>
-        public Categorise(List<string> categories, List<Transaction> uncategorisedTransactions)
+        /// <param name="transaction">Transaction</param>
+        public Categorise(Point baseLocation, List<string> categories, ref Transaction transaction)
         {
             InitializeComponent();
+            BaseLocation = baseLocation;
             Categories = categories;
-            UncategorisedTransactions = uncategorisedTransactions;
-            CategorisedTransactions = new List<Transaction>();
+            Transaction = transaction;
         }
 
         /// <summary>
@@ -42,19 +53,38 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void Categorise_Load(object sender, EventArgs e)
         {
-            // Load first transaction
-            LoadNextTransaction();
+            // Set form position
+            Left = BaseLocation.X + OFFSET;
+            Top = BaseLocation.Y + OFFSET;
+
+            // Load transaction info
+            CategoriseDateLabel.Text = Transaction.Date.ToString("dd/MM/yyyy");
+            CategoriseNameLabel.Text = Transaction.Name;
+            CategoriseAmountLabel.Text = Transaction.Amount.ToString(Home.CURRENCY_FORMAT);
+
+            // Load list view
+            CategoriseListView.BeginUpdate();
+            CategoriseListView.Items.Add(NEW_CATEGORY);
+            foreach (string category in Categories)
+                CategoriseListView.Items.Add(category);
+            CategoriseListView.EndUpdate();
         }
 
         /// <summary>
-        /// Load next transaction
+        /// Submit click event
         /// </summary>
-        private void LoadNextTransaction()
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void CategoriseSubmit_Click(object sender, EventArgs e)
         {
-            Transaction transaction = UncategorisedTransactions.First();
-            CategoriseDateLabel.Text = transaction.Date.ToString("dd/MM/yyyy");
-            CategoriseNameLabel.Text = transaction.Name;
-            CategoriseAmountLabel.Text = transaction.Amount.ToString(Home.CURRENCY_FORMAT);
+            string selectedCategory = CategoriseListView.SelectedItems[0].Text;
+            if (selectedCategory == NEW_CATEGORY)
+                throw new NotImplementedException();
+            else
+            {
+                Transaction.Category = selectedCategory;
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }

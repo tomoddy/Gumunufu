@@ -46,6 +46,11 @@ namespace Gumunufu
         #endregion
 
         /// <summary>
+        /// Database path
+        /// </summary>
+        public static string Path => Get("Path");
+
+        /// <summary>
         /// Start date
         /// </summary>
         public static DateTime StartDate => Get<DateTime>("StartDate", DateTime.TryParse);

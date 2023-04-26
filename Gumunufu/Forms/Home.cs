@@ -12,11 +12,6 @@ namespace Gumunufu.Forms
         #region Properties and Events
 
         /// <summary>
-        /// Default database path
-        /// </summary>
-        private const string DEFAULT_PATH = "Database.csv";
-
-        /// <summary>
         /// Month label
         /// </summary>
         private const string MONTH = "Month";
@@ -29,12 +24,17 @@ namespace Gumunufu.Forms
         /// <summary>
         /// Margin for resizing form
         /// </summary>
-        private const int FORM_MARGIN = 120;
+        private const int FORM_MARGIN = 200;
 
         /// <summary>
         /// Currency cell format
         /// </summary>
         public const string CURRENCY_FORMAT = "c2";
+
+        /// <summary>
+        /// Data client
+        /// </summary>
+        private DataClient Client { get; set; }
 
         /// <summary>
         /// Transaction set
@@ -47,8 +47,8 @@ namespace Gumunufu.Forms
         public Home()
         {
             InitializeComponent();
-            DataReader reader = new(DEFAULT_PATH);
-            TransactionSet = new(reader.GetTransactions());
+            Client = new(Config.Path);
+            TransactionSet = new(Client.GetTransactions());
         }
 
         /// <summary>
@@ -58,6 +58,9 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void Home_Load(object sender, EventArgs e)
         {
+            // Clear table
+            HomeTable.Columns.Clear();
+
             // Disable controls
             SetControls(false);
 
@@ -94,7 +97,16 @@ namespace Gumunufu.Forms
         /// <param name="count">Number of items</param>
         private void SetCategoriseLabel(int count)
         {
-            HomeMenuStrip.Items["HomeMenuStripCategorise"].Text = $"Categorise ({count})";
+            if (count > 0)
+            {
+                HomeMenuStrip.Items["HomeMenuStripCategorise"].Enabled = true;
+                HomeMenuStrip.Items["HomeMenuStripCategorise"].Text = $"Categorise ({count})";
+            }
+            else
+            {
+                HomeMenuStrip.Items["HomeMenuStripCategorise"].Enabled = false;
+                HomeMenuStrip.Items["HomeMenuStripCategorise"].Text = "Categorise";
+            }
         }
 
         /// <summary>
@@ -104,12 +116,27 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void HomeMenuStripCategorise_Click(object sender, EventArgs e)
         {
-            if (TransactionSet.UncategoriedTransactions.Count > 0)
+            // Categorise unset transactions
+            while(TransactionSet.UncategoriedTransactions.Count > 0)
             {
-                Categorise categoriseForm = new(TransactionSet.Categories, TransactionSet.UncategoriedTransactions);
-                categoriseForm.ShowDialog();
-                TransactionSet.Transactions.AddRange(categoriseForm.CategorisedTransactions);
+                // Show transaction dialog
+                Transaction uncategorisedTransaction = TransactionSet.UncategoriedTransactions.First();
+                Categorise categoriseForm = new(Location, TransactionSet.Categories, ref uncategorisedTransaction);
+                DialogResult result = categoriseForm.ShowDialog();
+
+                // Move transaction into main list if submitted
+                if (result == DialogResult.OK)
+                {
+                    TransactionSet.UncategoriedTransactions.Remove(uncategorisedTransaction);
+                    TransactionSet.Transactions.Add(uncategorisedTransaction);
+                }
             }
+
+            // Update database
+            Client.UpdateTransactions(TransactionSet.Transactions);
+
+            // Reload form
+            Home_Load(sender, e);
         }
 
         #endregion

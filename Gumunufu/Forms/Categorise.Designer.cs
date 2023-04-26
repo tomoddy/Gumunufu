@@ -28,90 +28,122 @@
         /// </summary>
         private void InitializeComponent()
         {
-            CategoriseDateLabel = new Label();
-            CategoriseNameLabel = new Label();
-            CategoriseAmountLabel = new Label();
-            CategoriseDateTagLabel = new Label();
-            CategoriseNameTagLabel = new Label();
-            CategoriseAmountTagLabel = new Label();
-            SuspendLayout();
+            this.CategoriseDateLabel = new System.Windows.Forms.Label();
+            this.CategoriseNameLabel = new System.Windows.Forms.Label();
+            this.CategoriseAmountLabel = new System.Windows.Forms.Label();
+            this.CategoriseDateTagLabel = new System.Windows.Forms.Label();
+            this.CategoriseNameTagLabel = new System.Windows.Forms.Label();
+            this.CategoriseAmountTagLabel = new System.Windows.Forms.Label();
+            this.CategoriseListView = new System.Windows.Forms.ListView();
+            this.CategoriseSubmit = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // CategoriseDateLabel
             // 
-            CategoriseDateLabel.AutoSize = true;
-            CategoriseDateLabel.Location = new Point(84, 9);
-            CategoriseDateLabel.Name = "CategoriseDateLabel";
-            CategoriseDateLabel.Size = new Size(30, 15);
-            CategoriseDateLabel.TabIndex = 0;
-            CategoriseDateLabel.Text = "date";
-            CategoriseDateLabel.TextAlign = ContentAlignment.MiddleRight;
+            this.CategoriseDateLabel.AutoSize = true;
+            this.CategoriseDateLabel.Location = new System.Drawing.Point(120, 15);
+            this.CategoriseDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CategoriseDateLabel.Name = "CategoriseDateLabel";
+            this.CategoriseDateLabel.Size = new System.Drawing.Size(47, 25);
+            this.CategoriseDateLabel.TabIndex = 0;
+            this.CategoriseDateLabel.Text = "date";
+            this.CategoriseDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CategoriseNameLabel
             // 
-            CategoriseNameLabel.AutoSize = true;
-            CategoriseNameLabel.Location = new Point(84, 24);
-            CategoriseNameLabel.Name = "CategoriseNameLabel";
-            CategoriseNameLabel.Size = new Size(37, 15);
-            CategoriseNameLabel.TabIndex = 1;
-            CategoriseNameLabel.Text = "name";
-            CategoriseNameLabel.TextAlign = ContentAlignment.MiddleRight;
+            this.CategoriseNameLabel.AutoSize = true;
+            this.CategoriseNameLabel.Location = new System.Drawing.Point(120, 40);
+            this.CategoriseNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CategoriseNameLabel.Name = "CategoriseNameLabel";
+            this.CategoriseNameLabel.Size = new System.Drawing.Size(56, 25);
+            this.CategoriseNameLabel.TabIndex = 1;
+            this.CategoriseNameLabel.Text = "name";
+            this.CategoriseNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CategoriseAmountLabel
             // 
-            CategoriseAmountLabel.AutoSize = true;
-            CategoriseAmountLabel.Location = new Point(84, 39);
-            CategoriseAmountLabel.Name = "CategoriseAmountLabel";
-            CategoriseAmountLabel.Size = new Size(49, 15);
-            CategoriseAmountLabel.TabIndex = 2;
-            CategoriseAmountLabel.Text = "amount";
-            CategoriseAmountLabel.TextAlign = ContentAlignment.MiddleRight;
+            this.CategoriseAmountLabel.AutoSize = true;
+            this.CategoriseAmountLabel.Location = new System.Drawing.Point(120, 65);
+            this.CategoriseAmountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CategoriseAmountLabel.Name = "CategoriseAmountLabel";
+            this.CategoriseAmountLabel.Size = new System.Drawing.Size(74, 25);
+            this.CategoriseAmountLabel.TabIndex = 2;
+            this.CategoriseAmountLabel.Text = "amount";
+            this.CategoriseAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CategoriseDateTagLabel
             // 
-            CategoriseDateTagLabel.AutoSize = true;
-            CategoriseDateTagLabel.Location = new Point(12, 9);
-            CategoriseDateTagLabel.Name = "CategoriseDateTagLabel";
-            CategoriseDateTagLabel.Size = new Size(37, 15);
-            CategoriseDateTagLabel.TabIndex = 3;
-            CategoriseDateTagLabel.Text = "Date :";
-            CategoriseDateTagLabel.TextAlign = ContentAlignment.MiddleLeft;
+            this.CategoriseDateTagLabel.AutoSize = true;
+            this.CategoriseDateTagLabel.Location = new System.Drawing.Point(17, 15);
+            this.CategoriseDateTagLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CategoriseDateTagLabel.Name = "CategoriseDateTagLabel";
+            this.CategoriseDateTagLabel.Size = new System.Drawing.Size(58, 25);
+            this.CategoriseDateTagLabel.TabIndex = 3;
+            this.CategoriseDateTagLabel.Text = "Date :";
+            this.CategoriseDateTagLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CategoriseNameTagLabel
             // 
-            CategoriseNameTagLabel.AutoSize = true;
-            CategoriseNameTagLabel.Location = new Point(12, 24);
-            CategoriseNameTagLabel.Name = "CategoriseNameTagLabel";
-            CategoriseNameTagLabel.Size = new Size(45, 15);
-            CategoriseNameTagLabel.TabIndex = 4;
-            CategoriseNameTagLabel.Text = "Name :";
-            CategoriseNameTagLabel.TextAlign = ContentAlignment.MiddleLeft;
+            this.CategoriseNameTagLabel.AutoSize = true;
+            this.CategoriseNameTagLabel.Location = new System.Drawing.Point(17, 40);
+            this.CategoriseNameTagLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CategoriseNameTagLabel.Name = "CategoriseNameTagLabel";
+            this.CategoriseNameTagLabel.Size = new System.Drawing.Size(68, 25);
+            this.CategoriseNameTagLabel.TabIndex = 4;
+            this.CategoriseNameTagLabel.Text = "Name :";
+            this.CategoriseNameTagLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CategoriseAmountTagLabel
             // 
-            CategoriseAmountTagLabel.AutoSize = true;
-            CategoriseAmountTagLabel.Location = new Point(12, 39);
-            CategoriseAmountTagLabel.Name = "CategoriseAmountTagLabel";
-            CategoriseAmountTagLabel.Size = new Size(57, 15);
-            CategoriseAmountTagLabel.TabIndex = 5;
-            CategoriseAmountTagLabel.Text = "Amount :";
-            CategoriseAmountTagLabel.TextAlign = ContentAlignment.MiddleLeft;
+            this.CategoriseAmountTagLabel.AutoSize = true;
+            this.CategoriseAmountTagLabel.Location = new System.Drawing.Point(17, 65);
+            this.CategoriseAmountTagLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CategoriseAmountTagLabel.Name = "CategoriseAmountTagLabel";
+            this.CategoriseAmountTagLabel.Size = new System.Drawing.Size(86, 25);
+            this.CategoriseAmountTagLabel.TabIndex = 5;
+            this.CategoriseAmountTagLabel.Text = "Amount :";
+            this.CategoriseAmountTagLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // CategoriseListView
+            // 
+            this.CategoriseListView.Location = new System.Drawing.Point(17, 105);
+            this.CategoriseListView.MultiSelect = false;
+            this.CategoriseListView.Name = "CategoriseListView";
+            this.CategoriseListView.Size = new System.Drawing.Size(325, 146);
+            this.CategoriseListView.TabIndex = 7;
+            this.CategoriseListView.UseCompatibleStateImageBehavior = false;
+            this.CategoriseListView.View = System.Windows.Forms.View.SmallIcon;
+            // 
+            // CategoriseSubmit
+            // 
+            this.CategoriseSubmit.Location = new System.Drawing.Point(230, 262);
+            this.CategoriseSubmit.Name = "CategoriseSubmit";
+            this.CategoriseSubmit.Size = new System.Drawing.Size(112, 34);
+            this.CategoriseSubmit.TabIndex = 8;
+            this.CategoriseSubmit.Text = "Submit";
+            this.CategoriseSubmit.UseVisualStyleBackColor = true;
+            this.CategoriseSubmit.Click += new System.EventHandler(this.CategoriseSubmit_Click);
             // 
             // Categorise
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(248, 126);
-            Controls.Add(CategoriseAmountTagLabel);
-            Controls.Add(CategoriseNameTagLabel);
-            Controls.Add(CategoriseDateTagLabel);
-            Controls.Add(CategoriseAmountLabel);
-            Controls.Add(CategoriseNameLabel);
-            Controls.Add(CategoriseDateLabel);
-            Name = "Categorise";
-            Text = "Categorise";
-            Load += Categorise_Load;
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(354, 308);
+            this.Controls.Add(this.CategoriseSubmit);
+            this.Controls.Add(this.CategoriseListView);
+            this.Controls.Add(this.CategoriseAmountTagLabel);
+            this.Controls.Add(this.CategoriseNameTagLabel);
+            this.Controls.Add(this.CategoriseDateTagLabel);
+            this.Controls.Add(this.CategoriseAmountLabel);
+            this.Controls.Add(this.CategoriseNameLabel);
+            this.Controls.Add(this.CategoriseDateLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "Categorise";
+            this.Text = "Categorise";
+            this.Load += new System.EventHandler(this.Categorise_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -122,5 +154,7 @@
         private Label CategoriseDateTagLabel;
         private Label CategoriseNameTagLabel;
         private Label CategoriseAmountTagLabel;
+        private ListView CategoriseListView;
+        private Button CategoriseSubmit;
     }
 }
