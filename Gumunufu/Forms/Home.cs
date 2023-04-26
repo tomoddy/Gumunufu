@@ -9,6 +9,13 @@ namespace Gumunufu.Forms
     /// </summary>
     public partial class Home : Form
     {
+        #region Properties and Events
+
+        /// <summary>
+        /// Default database path
+        /// </summary>
+        private const string DEFAULT_PATH = "Database.csv";
+
         /// <summary>
         /// Month label
         /// </summary>
@@ -20,14 +27,19 @@ namespace Gumunufu.Forms
         private const string TOTAL = "Total";
 
         /// <summary>
-        /// Currency cell format
-        /// </summary>
-        private const string CELL_FORMAT = "c2";
-
-        /// <summary>
         /// Margin for resizing form
         /// </summary>
         private const int FORM_MARGIN = 120;
+
+        /// <summary>
+        /// Currency cell format
+        /// </summary>
+        public const string CURRENCY_FORMAT = "c2";
+
+        /// <summary>
+        /// Transaction set
+        /// </summary>
+        private TransactionSet TransactionSet { get; set; }
 
         /// <summary>
         /// Default constructor
@@ -35,6 +47,8 @@ namespace Gumunufu.Forms
         public Home()
         {
             InitializeComponent();
+            DataReader reader = new(DEFAULT_PATH);
+            TransactionSet = new(reader.GetTransactions());
         }
 
         /// <summary>
@@ -44,32 +58,85 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void Home_Load(object sender, EventArgs e)
         {
-            DataReader reader = new("Database.csv");
-            TransactionSet transactionSet = new(reader.GetTransactions());
-            PopulateTable(transactionSet);
+            // Disable controls
+            SetControls(false);
+
+            // Populate controls
+            PopulateMenuStrip();
+            PopulateTable();
+
+            // Enable controls
+            SetControls(true);
         }
+
+        private void SetControls(bool state)
+        {
+            HomeTable.Enabled = state;
+            HomeMenuStrip.Enabled = state;
+        }
+
+        #endregion
+
+        #region Menu Strip
+
+        /// <summary>
+        /// Populate menu strip
+        /// </summary>
+        /// <param name="uncategorisedCount">Number of uncategorised transactions</param>
+        private void PopulateMenuStrip()
+        {
+            SetCategoriseLabel(TransactionSet.UncategoriedTransactions.Count);
+        }
+
+        /// <summary>
+        /// Set the label for the categorise button
+        /// </summary>
+        /// <param name="count">Number of items</param>
+        private void SetCategoriseLabel(int count)
+        {
+            HomeMenuStrip.Items["HomeMenuStripCategorise"].Text = $"Categorise ({count})";
+        }
+
+        /// <summary>
+        /// Categorise click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripCategorise_Click(object sender, EventArgs e)
+        {
+            if (TransactionSet.UncategoriedTransactions.Count > 0)
+            {
+                Categorise categoriseForm = new(TransactionSet.Categories, TransactionSet.UncategoriedTransactions);
+                categoriseForm.ShowDialog();
+                TransactionSet.Transactions.AddRange(categoriseForm.CategorisedTransactions);
+            }
+        }
+
+        #endregion
+
+        #region Table
 
         /// <summary>
         /// Populate table
         /// </summary>
-        /// <param name="transactionSet">Transaction set</param>
-        private void PopulateTable(TransactionSet transactionSet)
+        /// <param name="TransactionSet">Transaction set</param>
+        private void PopulateTable()
         {
             // Add month header
             HomeTable.Columns.Add(MONTH, MONTH);
 
             // Add category headers
-            foreach (string? category in transactionSet.Categories)
+            foreach (string? category in TransactionSet.Categories)
             {
                 int categoryIndex = HomeTable.Columns.Add(category, category);
-                HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = CELL_FORMAT;
+                HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = CURRENCY_FORMAT;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
 
             // Add total header
             int totalIndex = HomeTable.Columns.Add(TOTAL, TOTAL);
-            HomeTable.Columns[totalIndex].DefaultCellStyle.Format = CELL_FORMAT;
+            HomeTable.Columns[totalIndex].DefaultCellStyle.Format = CURRENCY_FORMAT;
             HomeTable.Columns[totalIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             HomeTable.Columns[totalIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
@@ -86,10 +153,10 @@ namespace Gumunufu.Forms
                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = month.ToString("MMM yyyy"), Tag = month });
 
                 // Add category totals
-                foreach (string category in transactionSet.Categories)
+                foreach (string category in TransactionSet.Categories)
                 {
                     // Create cell and add to row
-                    CellData cellData = transactionSet.GetCellData(month, category);
+                    CellData cellData = TransactionSet.GetCellData(month, category);
                     DataGridViewCell newCell = new DataGridViewTextBoxCell { Value = (int)cellData.Total != 0 ? cellData.Total : string.Empty, Tag = cellData };
                     newRow.Cells.Add(newCell);
 
@@ -105,7 +172,7 @@ namespace Gumunufu.Forms
 
             // Sort month total and colour cells
             monthTotal.Sort();
-            ColourCells(transactionSet.Categories, new ColourCalculator(monthTotal.First(), monthTotal.Last()));
+            ColourCells(TransactionSet.Categories, new ColourCalculator(monthTotal.First(), monthTotal.Last()));
 
             // Resize columns
             HomeTable.AutoResizeColumns();
@@ -149,5 +216,7 @@ namespace Gumunufu.Forms
                 foreach (string category in categories)
                     row.Cells[category].Style.BackColor = calculator.GetColour(row.Cells[category].Tag);
         }
+
+        #endregion
     }
 }

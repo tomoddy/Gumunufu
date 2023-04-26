@@ -11,6 +11,11 @@
         internal List<Transaction> Transactions { get; set; }
 
         /// <summary>
+        /// Uncategories transactions
+        /// </summary>
+        internal List<Transaction> UncategoriedTransactions { get; set; }
+
+        /// <summary>
         /// List of categories
         /// </summary>
         internal List<string> Categories { get; set; }
@@ -21,8 +26,9 @@
         /// <param name="transactions">List of transaction</param>
         internal TransactionSet(List<Transaction> transactions)
         {
-            // Sort transactions by date
-            Transactions = transactions.OrderBy(t => t.Date).ToList();
+            // Sort transactions by category and date
+            Transactions = transactions.Where(t => t.Category != null).OrderBy(t => t.Date).ToList();
+            UncategoriedTransactions = transactions.Where(t => t.Category is null).ToList();
 
             // Get non null, distinct cateogies sorted alphabetically
             Categories = Transactions.Where(t => t.Category is not null).OrderBy(t => t.Category).Select(t => t.Category).Distinct().Cast<string>().ToList();
