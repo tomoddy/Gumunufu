@@ -28,36 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.HomeTable = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).BeginInit();
-            this.SuspendLayout();
+            HomeTable = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)HomeTable).BeginInit();
+            SuspendLayout();
             // 
             // HomeTable
             // 
-            this.HomeTable.AllowUserToAddRows = false;
-            this.HomeTable.AllowUserToDeleteRows = false;
-            this.HomeTable.AllowUserToResizeColumns = false;
-            this.HomeTable.AllowUserToResizeRows = false;
-            this.HomeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HomeTable.Location = new System.Drawing.Point(12, 12);
-            this.HomeTable.Name = "HomeTable";
-            this.HomeTable.RowHeadersWidth = 62;
-            this.HomeTable.RowTemplate.Height = 33;
-            this.HomeTable.Size = new System.Drawing.Size(2523, 1203);
-            this.HomeTable.TabIndex = 0;
+            HomeTable.AllowUserToAddRows = false;
+            HomeTable.AllowUserToDeleteRows = false;
+            HomeTable.AllowUserToResizeColumns = false;
+            HomeTable.AllowUserToResizeRows = false;
+            HomeTable.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            HomeTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            HomeTable.Location = new Point(11, 11);
+            HomeTable.Margin = new Padding(2);
+            HomeTable.Name = "HomeTable";
+            HomeTable.RowHeadersWidth = 62;
+            HomeTable.RowTemplate.Height = 33;
+            HomeTable.Size = new Size(625, 714);
+            HomeTable.TabIndex = 0;
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2547, 1227);
-            this.Controls.Add(this.HomeTable);
-            this.Name = "Home";
-            this.Text = "Gumunufu";
-            this.Load += new System.EventHandler(this.Home_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(647, 736);
+            Controls.Add(HomeTable);
+            Margin = new Padding(2);
+            Name = "Home";
+            Text = "Gumunufu";
+            Load += Home_Load;
+            ((System.ComponentModel.ISupportInitialize)HomeTable).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

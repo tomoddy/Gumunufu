@@ -25,6 +25,11 @@ namespace Gumunufu.Forms
         private const string CELL_FORMAT = "c2";
 
         /// <summary>
+        /// Margin for resizing form
+        /// </summary>
+        private const int FORM_MARGIN = 120;
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public Home()
@@ -104,6 +109,10 @@ namespace Gumunufu.Forms
 
             // Resize columns
             HomeTable.AutoResizeColumns();
+
+            // Size form
+            Width = HomeTable.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + FORM_MARGIN;
+            Height = HomeTable.Rows.GetRowsHeight(DataGridViewElementStates.Visible) + FORM_MARGIN;
         }
 
         /// <summary>
