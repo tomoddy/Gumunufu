@@ -14,7 +14,7 @@ namespace Gumunufu.Helpers
         /// </summary>
         internal DataReaderMap()
         {
-            Map(m => m.Date).TypeConverterOption.Format("dd/MM/yyyy").TypeConverterOption.CultureInfo(CultureInfo.InvariantCulture).Index(0);
+            Map(m => m.Date).TypeConverterOption.Format(Config.SHORT_DATE).TypeConverterOption.CultureInfo(CultureInfo.InvariantCulture).Index(0);
             Map(m => m.Name).Index(1);
             Map(m => m.Amount).Index(2);
             Map(m => m.Category).Index(3);

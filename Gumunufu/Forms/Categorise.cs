@@ -60,9 +60,9 @@ namespace Gumunufu.Forms
             Top = BaseLocation.Y + OFFSET;
 
             // Load transaction info
-            CategoriseDateLabel.Text = Transaction.Date.ToString("dd/MM/yyyy");
+            CategoriseDateLabel.Text = Transaction.Date.ToString(Config.SHORT_DATE);
             CategoriseNameLabel.Text = Transaction.Name;
-            CategoriseAmountLabel.Text = Transaction.Amount.ToString(Home.CURRENCY_FORMAT);
+            CategoriseAmountLabel.Text = Transaction.Amount.ToString(Config.CURRENCY_FORMAT);
 
             // Load list view
             CategoriseListView.BeginUpdate();

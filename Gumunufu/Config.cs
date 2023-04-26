@@ -45,6 +45,67 @@ namespace Gumunufu
 
         #endregion
 
+        #region Global Constants
+
+        /// <summary>
+        /// Date
+        /// </summary>
+        public const string DATE = "Date";
+
+        /// <summary>
+        /// Category
+        /// </summary>
+        public const string CATEGORY = "Category";
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        public const string NAME = "Name";
+
+        /// <summary>
+        /// Amount
+        /// </summary>
+        public const string AMOUNT = "Amount";
+
+        /// <summary>
+        /// Month label
+        /// </summary>
+        public const string MONTH = "Month";
+
+        /// <summary>
+        /// Total label
+        /// </summary>
+        public const string TOTAL = "Total";
+
+        /// <summary>
+        /// Short date format
+        /// </summary>
+        public const string SHORT_DATE = "dd/MM/yyyy";
+
+        /// <summary>
+        /// Month/year date format
+        /// </summary>
+        public const string MONTH_YEAR_DATE = "MMM yyyy";
+
+        /// <summary>
+        /// Margin for resizing form
+        /// </summary>
+        public const int DGV_MARGIN = 200;
+
+        /// <summary>
+        /// CSV file dialog format
+        /// </summary>
+        public const string CSV_FILTER = "CSV Files (*.csv)|*.csv";
+
+        /// <summary>
+        /// Currency cell format
+        /// </summary>
+        public const string CURRENCY_FORMAT = "c2";
+
+        #endregion
+
+        #region Config Options
+
         /// <summary>
         /// Icon path
         /// </summary>
@@ -64,5 +125,7 @@ namespace Gumunufu
         /// Column order
         /// </summary>
         public static List<string> ColumnOrder => Get("ColumnOrder").Split(',').ToList();
+
+        #endregion
     }
 }

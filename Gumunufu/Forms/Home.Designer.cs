@@ -30,11 +30,13 @@
         {
             this.HomeTable = new System.Windows.Forms.DataGridView();
             this.HomeMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.HomeMenuStripView = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsert = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFile = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFileLloyds = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertManual = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripCategorise = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripViewAll = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).BeginInit();
             this.HomeMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -61,13 +63,22 @@
             this.HomeMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.HomeMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HomeMenuStripInsert,
-            this.HomeMenuStripCategorise});
+            this.HomeMenuStripCategorise,
+            this.HomeMenuStripView});
             this.HomeMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.HomeMenuStrip.Name = "HomeMenuStrip";
             this.HomeMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
             this.HomeMenuStrip.Size = new System.Drawing.Size(924, 35);
             this.HomeMenuStrip.TabIndex = 1;
             this.HomeMenuStrip.Text = "HomeMenuStrip";
+            // 
+            // HomeMenuStripView
+            // 
+            this.HomeMenuStripView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HomeMenuStripViewAll});
+            this.HomeMenuStripView.Name = "HomeMenuStripView";
+            this.HomeMenuStripView.Size = new System.Drawing.Size(65, 29);
+            this.HomeMenuStripView.Text = "View";
             // 
             // HomeMenuStripInsert
             // 
@@ -83,20 +94,20 @@
             this.HomeMenuStripInsertFromFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HomeMenuStripInsertFromFileLloyds});
             this.HomeMenuStripInsertFromFile.Name = "HomeMenuStripInsertFromFile";
-            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(187, 34);
             this.HomeMenuStripInsertFromFile.Text = "From File";
             // 
             // HomeMenuStripInsertFromFileLloyds
             // 
             this.HomeMenuStripInsertFromFileLloyds.Name = "HomeMenuStripInsertFromFileLloyds";
-            this.HomeMenuStripInsertFromFileLloyds.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripInsertFromFileLloyds.Size = new System.Drawing.Size(165, 34);
             this.HomeMenuStripInsertFromFileLloyds.Text = "Lloyds";
             this.HomeMenuStripInsertFromFileLloyds.Click += new System.EventHandler(this.HomeMenuStripInsertFromFileLloyds_Click);
             // 
             // HomeMenuStripInsertManual
             // 
             this.HomeMenuStripInsertManual.Name = "HomeMenuStripInsertManual";
-            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(187, 34);
             this.HomeMenuStripInsertManual.Text = "Manual";
             this.HomeMenuStripInsertManual.Click += new System.EventHandler(this.HomeMenuStripInsertManual_Click);
             // 
@@ -106,6 +117,13 @@
             this.HomeMenuStripCategorise.Size = new System.Drawing.Size(112, 29);
             this.HomeMenuStripCategorise.Text = "Categorise";
             this.HomeMenuStripCategorise.Click += new System.EventHandler(this.HomeMenuStripCategorise_Click);
+            // 
+            // HomeMenuStripViewAll
+            // 
+            this.HomeMenuStripViewAll.Name = "HomeMenuStripViewAll";
+            this.HomeMenuStripViewAll.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripViewAll.Text = "All";
+            this.HomeMenuStripViewAll.Click += new System.EventHandler(this.HomeMenuStripViewAll_Click);
             // 
             // Home
             // 
@@ -135,5 +153,7 @@
         private ToolStripMenuItem HomeMenuStripInsertManual;
         private ToolStripMenuItem HomeMenuStripCategorise;
         private ToolStripMenuItem HomeMenuStripInsertFromFileLloyds;
+        private ToolStripMenuItem HomeMenuStripView;
+        private ToolStripMenuItem HomeMenuStripViewAll;
     }
 }

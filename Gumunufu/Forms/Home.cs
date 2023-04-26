@@ -12,31 +12,6 @@ namespace Gumunufu.Forms
         #region Properties and Events
 
         /// <summary>
-        /// Month label
-        /// </summary>
-        private const string MONTH = "Month";
-
-        /// <summary>
-        /// Total label
-        /// </summary>
-        private const string TOTAL = "Total";
-
-        /// <summary>
-        /// Margin for resizing form
-        /// </summary>
-        private const int FORM_MARGIN = 200;
-
-        /// <summary>
-        /// CSV file dialog format
-        /// </summary>
-        private const string CSV_FILTER = "CSV Files (*.csv)|*.csv";
-
-        /// <summary>
-        /// Currency cell format
-        /// </summary>
-        public const string CURRENCY_FORMAT = "c2";
-
-        /// <summary>
         /// Data client
         /// </summary>
         private DataClient Client { get; set; }
@@ -116,6 +91,17 @@ namespace Gumunufu.Forms
         }
 
         /// <summary>
+        /// Open window with all transactions
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripViewAll_Click(object sender, EventArgs e)
+        {
+            TransactionView transactionView = new(TransactionSet.Transactions);
+            transactionView.ShowDialog();
+        }
+
+        /// <summary>
         /// Insert from lloyds file click event
         /// </summary>
         /// <param name="sender">Sender</param>
@@ -124,7 +110,7 @@ namespace Gumunufu.Forms
         {
             OpenFileDialog fileDialog = new()
             {
-                Filter = CSV_FILTER
+                Filter = Config.CSV_FILTER
             };
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
@@ -197,20 +183,20 @@ namespace Gumunufu.Forms
         private void PopulateTable()
         {
             // Add month header
-            HomeTable.Columns.Add(MONTH, MONTH);
+            HomeTable.Columns.Add(Config.MONTH, Config.MONTH);
 
             // Add category headers
             foreach (string? category in TransactionSet.Categories)
             {
                 int categoryIndex = HomeTable.Columns.Add(category, category);
-                HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = CURRENCY_FORMAT;
+                HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = Config.CURRENCY_FORMAT;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
 
             // Add total header
-            int totalIndex = HomeTable.Columns.Add(TOTAL, TOTAL);
-            HomeTable.Columns[totalIndex].DefaultCellStyle.Format = CURRENCY_FORMAT;
+            int totalIndex = HomeTable.Columns.Add(Config.TOTAL, Config.TOTAL);
+            HomeTable.Columns[totalIndex].DefaultCellStyle.Format = Config.CURRENCY_FORMAT;
             HomeTable.Columns[totalIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             HomeTable.Columns[totalIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
@@ -224,7 +210,7 @@ namespace Gumunufu.Forms
                 float rowTotal = 0;
 
                 // Add date
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = month.ToString("MMM yyyy"), Tag = month });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = month.ToString(Config.MONTH_YEAR_DATE), Tag = month });
 
                 // Add category totals
                 foreach (string category in TransactionSet.Categories)
@@ -250,14 +236,14 @@ namespace Gumunufu.Forms
             ColourCells(TransactionSet.Categories, new ColourCalculator(cellValues.First(), cellValues.Last()));
 
             // Colour total column
-            ColourCells(new List<string> { TOTAL }, new ColourCalculator(cellValues.First(), cellValues.Last()));
+            ColourCells(new List<string> { Config.TOTAL }, new ColourCalculator(cellValues.First(), cellValues.Last()));
 
             // Resize columns
             HomeTable.AutoResizeColumns();
 
             // Size form
-            Width = HomeTable.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + FORM_MARGIN;
-            Height = HomeTable.Rows.GetRowsHeight(DataGridViewElementStates.Visible) + FORM_MARGIN;
+            Width = HomeTable.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + Config.DGV_MARGIN;
+            Height = HomeTable.Rows.GetRowsHeight(DataGridViewElementStates.Visible) + Config.DGV_MARGIN;
         }
 
         /// <summary>
