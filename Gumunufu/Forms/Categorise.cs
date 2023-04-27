@@ -80,7 +80,7 @@ namespace Gumunufu.Forms
         private void CategoriseNameLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LinkLabel linkLabel = (LinkLabel)sender;
-            Process.Start(Config.BrowserPath, $"{Config.SEARCH_QUERY}{linkLabel.Text}");
+            Process.Start(Config.BrowserPath, $"{Config.SEARCH_QUERY}{linkLabel.Text.Replace(' ', '+')}");
         }
 
         /// <summary>
@@ -101,8 +101,11 @@ namespace Gumunufu.Forms
             }
             else
             {
-                Transaction.Category = CategoriseListView.SelectedItems[0].Text;
-                DialogResult = DialogResult.OK;
+                if (CategoriseListView.SelectedItems.Count == 1)
+                {
+                    Transaction.Category = CategoriseListView.SelectedItems[0].Text;
+                    DialogResult = DialogResult.OK;
+                }
             }
         }
 
