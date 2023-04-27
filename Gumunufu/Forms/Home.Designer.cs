@@ -38,6 +38,7 @@
             this.HomeMenuStripView = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewAll = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalBy = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStrupViewTotalByAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalByCategory = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalByName = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).BeginInit();
@@ -125,30 +126,38 @@
             // HomeMenuStripViewAll
             // 
             this.HomeMenuStripViewAll.Name = "HomeMenuStripViewAll";
-            this.HomeMenuStripViewAll.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripViewAll.Size = new System.Drawing.Size(175, 34);
             this.HomeMenuStripViewAll.Text = "All";
             this.HomeMenuStripViewAll.Click += new System.EventHandler(this.HomeMenuStripViewAll_Click);
             // 
             // HomeMenuStripViewTotalBy
             // 
             this.HomeMenuStripViewTotalBy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HomeMenuStrupViewTotalByAccount,
             this.HomeMenuStripViewTotalByCategory,
             this.HomeMenuStripViewTotalByName});
             this.HomeMenuStripViewTotalBy.Name = "HomeMenuStripViewTotalBy";
-            this.HomeMenuStripViewTotalBy.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripViewTotalBy.Size = new System.Drawing.Size(175, 34);
             this.HomeMenuStripViewTotalBy.Text = "Total By";
+            // 
+            // HomeMenuStrupViewTotalByAccount
+            // 
+            this.HomeMenuStrupViewTotalByAccount.Name = "HomeMenuStrupViewTotalByAccount";
+            this.HomeMenuStrupViewTotalByAccount.Size = new System.Drawing.Size(186, 34);
+            this.HomeMenuStrupViewTotalByAccount.Text = "Account";
+            this.HomeMenuStrupViewTotalByAccount.Click += new System.EventHandler(this.HomeMenuStrupViewTotalByAccount_Click);
             // 
             // HomeMenuStripViewTotalByCategory
             // 
             this.HomeMenuStripViewTotalByCategory.Name = "HomeMenuStripViewTotalByCategory";
-            this.HomeMenuStripViewTotalByCategory.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripViewTotalByCategory.Size = new System.Drawing.Size(186, 34);
             this.HomeMenuStripViewTotalByCategory.Text = "Category";
             this.HomeMenuStripViewTotalByCategory.Click += new System.EventHandler(this.HomeMenuStripViewTotalByCategory_Click);
             // 
             // HomeMenuStripViewTotalByName
             // 
             this.HomeMenuStripViewTotalByName.Name = "HomeMenuStripViewTotalByName";
-            this.HomeMenuStripViewTotalByName.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripViewTotalByName.Size = new System.Drawing.Size(186, 34);
             this.HomeMenuStripViewTotalByName.Text = "Name";
             this.HomeMenuStripViewTotalByName.Click += new System.EventHandler(this.HomeMenuStripViewTotalByName_Click);
             // 
@@ -185,5 +194,6 @@
         private ToolStripMenuItem HomeMenuStripViewTotalBy;
         private ToolStripMenuItem HomeMenuStripViewTotalByCategory;
         private ToolStripMenuItem HomeMenuStripViewTotalByName;
+        private ToolStripMenuItem HomeMenuStrupViewTotalByAccount;
     }
 }

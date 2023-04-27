@@ -11,8 +11,9 @@ namespace Gumunufu.Helpers
         /// Import from lloyds bank statement
         /// </summary>
         /// <param name="path">File path</param>
+        /// <param name="accountName">Account name</param>
         /// <returns>List of transactions</returns>
-        internal static List<Transaction> LloydsImport(string path)
+        internal static List<Transaction> LloydsImport(string path, string accountName)
         {
             // Read file and remove first line
             List<Transaction> retVal = new();
@@ -30,6 +31,7 @@ namespace Gumunufu.Helpers
                 // Add transaction to list
                 retVal.Add(new Transaction
                 {
+                    Account = accountName,
                     Date = DateTime.Parse(cells[0]),
                     Name = cells[4],
                     Amount = credit - debit

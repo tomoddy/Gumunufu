@@ -42,7 +42,6 @@ namespace Gumunufu.Forms
         public Categorise(Point baseLocation, List<string> categories, ref Transaction transaction)
         {
             InitializeComponent();
-            Icon = new Icon(Config.Icon);
             BaseLocation = baseLocation;
             Categories = categories;
             Transaction = transaction;
@@ -62,6 +61,7 @@ namespace Gumunufu.Forms
 
             // Load transaction info
             CategoriseDateLabel.Text = Transaction.Date.ToString(Config.SHORT_DATE);
+            CategoriseAccountLabel.Text = Transaction.Account;
             CategoriseNameLabel.Text = Transaction.Name;
             CategoriseAmountLabel.Text = Transaction.Amount.ToString(Config.CURRENCY_FORMAT);
 

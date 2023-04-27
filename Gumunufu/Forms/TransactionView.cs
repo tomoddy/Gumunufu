@@ -34,6 +34,7 @@ namespace Gumunufu.Forms
         {
             // Add columns
             TransactionViewTable.Columns.Add(Config.DATE, Config.DATE);
+            TransactionViewTable.Columns.Add(Config.ACCOUNT, Config.ACCOUNT);
             TransactionViewTable.Columns.Add(Config.CATEGORY, Config.CATEGORY);
             TransactionViewTable.Columns.Add(Config.NAME, Config.NAME);
             TransactionViewTable.Columns.Add(Config.AMOUNT, Config.AMOUNT);
@@ -51,7 +52,8 @@ namespace Gumunufu.Forms
             {
                 DataGridViewRow newRow = new();
                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = transaction.Date });
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = transaction.Category! });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = transaction.Account });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = transaction.Category });
                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = transaction.Name });
                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = transaction.Amount });
                 TransactionViewTable.Rows.Add(newRow);

@@ -11,6 +11,11 @@
         public DateTime Date { get; set; }
 
         /// <summary>
+        /// Account
+        /// </summary>
+        public string? Account { get; set; }
+
+        /// <summary>
         /// Name
         /// </summary>
         public string? Name { get; set; }

@@ -97,16 +97,18 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void HomeMenuStripInsertFromFileLloyds_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fileDialog = new()
-            {
-                Filter = Config.CSV_FILTER
-            };
-
+            // Create and show open file dialog
+            OpenFileDialog fileDialog = new() { Filter = Config.CSV_FILTER };
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                TransactionSet.Transactions.AddRange(FileImport.LloydsImport(fileDialog.FileName));
-                Client.UpdateTransactions(TransactionSet);
-                Home_Load(sender, e);
+                // Create dialog to get account name
+                AccountInput accountInput = new();
+                if (accountInput.ShowDialog() == DialogResult.OK)
+                {
+                    TransactionSet.Transactions.AddRange(FileImport.LloydsImport(fileDialog.FileName, accountInput.AccountName));
+                    Client.UpdateTransactions(TransactionSet);
+                    Home_Load(sender, e);
+                }
             }
         }
 
@@ -170,6 +172,17 @@ namespace Gumunufu.Forms
         {
             TransactionView transactionView = new(TransactionSet.Transactions);
             transactionView.ShowDialog();
+        }
+
+        /// <summary>
+        /// Open window with transactions totalled by account
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStrupViewTotalByAccount_Click(object sender, EventArgs e)
+        {
+            TotalBy totalByCategory = new(Config.ACCOUNT, TransactionSet.Transactions);
+            totalByCategory.ShowDialog();
         }
 
         /// <summary>

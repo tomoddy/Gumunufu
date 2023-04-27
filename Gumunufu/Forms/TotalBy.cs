@@ -84,7 +84,9 @@ namespace Gumunufu.Forms
             {
                 if (label is not null)
                 {
-                    if (argument == Config.CATEGORY)
+                    if (argument == Config.ACCOUNT)
+                        retVal.Add(label, Transactions.Where(t => t.Account == label).Sum(t => t.Amount));
+                    else if (argument == Config.CATEGORY)
                         retVal.Add(label, Transactions.Where(t => t.Category == label).Sum(t => t.Amount));
                     else if (argument == Config.NAME)
                         retVal.Add(label, Transactions.Where(t => t.Name == label).Sum(t => t.Amount));
@@ -102,15 +104,13 @@ namespace Gumunufu.Forms
         /// <returns>List of labels</returns>
         private List<string?> GetLabels(string argument)
         {
-            switch (argument)
+            return argument switch
             {
-                case Config.CATEGORY:
-                    return Transactions.Select(t => t.Category).Distinct().ToList();
-                case Config.NAME:
-                    return Transactions.Select(t => t.Name).Distinct().ToList();
-                default:
-                    return new List<string?>();
-            }
+                Config.ACCOUNT => Transactions.Select(t => t.Account).Distinct().ToList(),
+                Config.CATEGORY => Transactions.Select(t => t.Category).Distinct().ToList(),
+                Config.NAME => Transactions.Select(t => t.Name).Distinct().ToList(),
+                _ => new List<string?>(),
+            };
         }
     }
 }

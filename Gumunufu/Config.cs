@@ -53,6 +53,11 @@ namespace Gumunufu
         public const string DATE = "Date";
 
         /// <summary>
+        /// Account
+        /// </summary>
+        public const string ACCOUNT = "Account";
+
+        /// <summary>
         /// Category
         /// </summary>
         public const string CATEGORY = "Category";
@@ -125,6 +130,11 @@ namespace Gumunufu
         /// Browser path
         /// </summary>
         public static string BrowserPath => Get("BrowserPath");
+
+        /// <summary>
+        /// Default account name
+        /// </summary>
+        public static string DefaultAccount => Get("DefaultAccount");
 
         /// <summary>
         /// Start date

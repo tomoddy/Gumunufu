@@ -38,6 +38,8 @@
             this.ManualAddCategoryLabel = new System.Windows.Forms.Label();
             this.ManualAddSubmit = new System.Windows.Forms.Button();
             this.ManualAddNegativeCheckBox = new System.Windows.Forms.CheckBox();
+            this.ManualAddAccountInput = new System.Windows.Forms.TextBox();
+            this.ManualAddAccountLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ManualAddDateLabel
@@ -54,7 +56,7 @@
             // ManualAddAmountLabel
             // 
             this.ManualAddAmountLabel.AutoSize = true;
-            this.ManualAddAmountLabel.Location = new System.Drawing.Point(13, 86);
+            this.ManualAddAmountLabel.Location = new System.Drawing.Point(13, 126);
             this.ManualAddAmountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ManualAddAmountLabel.Name = "ManualAddAmountLabel";
             this.ManualAddAmountLabel.Size = new System.Drawing.Size(86, 25);
@@ -65,7 +67,7 @@
             // ManualAddNameLabel
             // 
             this.ManualAddNameLabel.AutoSize = true;
-            this.ManualAddNameLabel.Location = new System.Drawing.Point(13, 49);
+            this.ManualAddNameLabel.Location = new System.Drawing.Point(13, 89);
             this.ManualAddNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ManualAddNameLabel.Name = "ManualAddNameLabel";
             this.ManualAddNameLabel.Size = new System.Drawing.Size(68, 25);
@@ -82,7 +84,7 @@
             // 
             // ManualAddNameInput
             // 
-            this.ManualAddNameInput.Location = new System.Drawing.Point(112, 46);
+            this.ManualAddNameInput.Location = new System.Drawing.Point(112, 86);
             this.ManualAddNameInput.Name = "ManualAddNameInput";
             this.ManualAddNameInput.Size = new System.Drawing.Size(400, 31);
             this.ManualAddNameInput.TabIndex = 9;
@@ -90,7 +92,7 @@
             // 
             // ManualAddAmountInput
             // 
-            this.ManualAddAmountInput.Location = new System.Drawing.Point(112, 83);
+            this.ManualAddAmountInput.Location = new System.Drawing.Point(112, 123);
             this.ManualAddAmountInput.Name = "ManualAddAmountInput";
             this.ManualAddAmountInput.Size = new System.Drawing.Size(400, 31);
             this.ManualAddAmountInput.TabIndex = 10;
@@ -98,7 +100,7 @@
             // 
             // ManualAddCategoryInput
             // 
-            this.ManualAddCategoryInput.Location = new System.Drawing.Point(112, 120);
+            this.ManualAddCategoryInput.Location = new System.Drawing.Point(112, 160);
             this.ManualAddCategoryInput.Name = "ManualAddCategoryInput";
             this.ManualAddCategoryInput.Size = new System.Drawing.Size(400, 31);
             this.ManualAddCategoryInput.TabIndex = 11;
@@ -106,7 +108,7 @@
             // ManualAddCategoryLabel
             // 
             this.ManualAddCategoryLabel.AutoSize = true;
-            this.ManualAddCategoryLabel.Location = new System.Drawing.Point(13, 123);
+            this.ManualAddCategoryLabel.Location = new System.Drawing.Point(13, 163);
             this.ManualAddCategoryLabel.Name = "ManualAddCategoryLabel";
             this.ManualAddCategoryLabel.Size = new System.Drawing.Size(93, 25);
             this.ManualAddCategoryLabel.TabIndex = 12;
@@ -115,7 +117,7 @@
             // 
             // ManualAddSubmit
             // 
-            this.ManualAddSubmit.Location = new System.Drawing.Point(400, 158);
+            this.ManualAddSubmit.Location = new System.Drawing.Point(400, 197);
             this.ManualAddSubmit.Name = "ManualAddSubmit";
             this.ManualAddSubmit.Size = new System.Drawing.Size(112, 34);
             this.ManualAddSubmit.TabIndex = 13;
@@ -126,18 +128,39 @@
             // ManualAddNegativeCheckBox
             // 
             this.ManualAddNegativeCheckBox.AutoSize = true;
-            this.ManualAddNegativeCheckBox.Location = new System.Drawing.Point(273, 162);
+            this.ManualAddNegativeCheckBox.Location = new System.Drawing.Point(278, 201);
             this.ManualAddNegativeCheckBox.Name = "ManualAddNegativeCheckBox";
             this.ManualAddNegativeCheckBox.Size = new System.Drawing.Size(116, 29);
             this.ManualAddNegativeCheckBox.TabIndex = 14;
             this.ManualAddNegativeCheckBox.Text = "Negative?";
             this.ManualAddNegativeCheckBox.UseVisualStyleBackColor = true;
             // 
+            // ManualAddAccountInput
+            // 
+            this.ManualAddAccountInput.Location = new System.Drawing.Point(112, 49);
+            this.ManualAddAccountInput.Name = "ManualAddAccountInput";
+            this.ManualAddAccountInput.Size = new System.Drawing.Size(400, 31);
+            this.ManualAddAccountInput.TabIndex = 16;
+            this.ManualAddAccountInput.Text = "GUMUFUNU";
+            // 
+            // ManualAddAccountLabel
+            // 
+            this.ManualAddAccountLabel.AutoSize = true;
+            this.ManualAddAccountLabel.Location = new System.Drawing.Point(13, 52);
+            this.ManualAddAccountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ManualAddAccountLabel.Name = "ManualAddAccountLabel";
+            this.ManualAddAccountLabel.Size = new System.Drawing.Size(86, 25);
+            this.ManualAddAccountLabel.TabIndex = 15;
+            this.ManualAddAccountLabel.Text = "Account :";
+            this.ManualAddAccountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ManualAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 204);
+            this.ClientSize = new System.Drawing.Size(524, 243);
+            this.Controls.Add(this.ManualAddAccountInput);
+            this.Controls.Add(this.ManualAddAccountLabel);
             this.Controls.Add(this.ManualAddNegativeCheckBox);
             this.Controls.Add(this.ManualAddSubmit);
             this.Controls.Add(this.ManualAddCategoryLabel);
@@ -148,6 +171,9 @@
             this.Controls.Add(this.ManualAddAmountLabel);
             this.Controls.Add(this.ManualAddNameLabel);
             this.Controls.Add(this.ManualAddDateLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ManualAdd";
             this.Text = "Add Transaction";
             this.Load += new System.EventHandler(this.ManualAdd_Load);
@@ -168,5 +194,7 @@
         private Label ManualAddCategoryLabel;
         private Button ManualAddSubmit;
         private CheckBox ManualAddNegativeCheckBox;
+        private TextBox ManualAddAccountInput;
+        private Label ManualAddAccountLabel;
     }
 }

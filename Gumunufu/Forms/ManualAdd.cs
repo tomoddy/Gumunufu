@@ -20,7 +20,6 @@ namespace Gumunufu.Forms
         public ManualAdd()
         {
             InitializeComponent();
-            Icon = new Icon(Config.Icon);
             NewTransaction = new Transaction();
         }
 
@@ -43,6 +42,7 @@ namespace Gumunufu.Forms
         {
             // Add basic elements to new transaction 
             NewTransaction.Date = ManualAddDatePicker.Value;
+            NewTransaction.Account = ManualAddAccountInput.Text;
             NewTransaction.Name = ManualAddNameInput.Text;
             NewTransaction.Category = ManualAddCategoryInput.Text;
 
