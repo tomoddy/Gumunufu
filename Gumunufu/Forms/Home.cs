@@ -1,4 +1,5 @@
 using Gumunufu.Helpers;
+using Gumunufu.Helpers.FileImport;
 using Gumunufu.Objects;
 using System.Globalization;
 
@@ -105,9 +106,49 @@ namespace Gumunufu.Forms
                 AccountInput accountInput = new();
                 if (accountInput.ShowDialog() == DialogResult.OK)
                 {
-                    TransactionSet.Transactions.AddRange(FileImport.LloydsImport(fileDialog.FileName, accountInput.AccountName));
-                    Client.UpdateTransactions(TransactionSet);
-                    Home_Load(sender, e);
+                    try
+                    {
+                        // Try to import data
+                        TransactionSet.Transactions.AddRange(FileImportClient.LloydsImport(fileDialog.FileName, accountInput.AccountName));
+                        Client.UpdateTransactions(TransactionSet);
+                        Home_Load(sender, e);
+                    }
+                    catch (FileImportException)
+                    {
+                        // Show error message
+                        MessageBox.Show("Data from file could not be imported.", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HomeMenuStrupInsertFromFileMonzo_Click(object sender, EventArgs e)
+        {
+            // Create and show open file dialog
+            OpenFileDialog fileDialog = new() { Filter = Config.CSV_FILTER };
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Create dialog to get account name
+                AccountInput accountInput = new();
+                if (accountInput.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Try to import data
+                        TransactionSet.Transactions.AddRange(FileImportClient.MonzoImport(fileDialog.FileName, accountInput.AccountName));
+                        Client.UpdateTransactions(TransactionSet);
+                        Home_Load(sender, e);
+                    }
+                    catch (FileImportException)
+                    {
+                        // Show error message
+                        MessageBox.Show("Data from file could not be imported.", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -143,17 +184,8 @@ namespace Gumunufu.Forms
                 Categorise categoriseForm = new(Location, TransactionSet.Categories, ref uncategorisedTransaction);
 
                 // Move transaction into main list if submitted
-                if (categoriseForm.ShowDialog() == DialogResult.OK)
-                {
-                    TransactionSet.UncategoriedTransactions.Remove(uncategorisedTransaction);
-                    TransactionSet.CategorisedTransactions.Add(uncategorisedTransaction);
-                }
-                else
+                if (categoriseForm.ShowDialog() != DialogResult.OK)
                     break;
-
-                // Add new category if option selected by user
-                if (!string.IsNullOrEmpty(categoriseForm.NewCategory))
-                    TransactionSet.Categories.Add(categoriseForm.NewCategory);
             }
 
             // Update database
