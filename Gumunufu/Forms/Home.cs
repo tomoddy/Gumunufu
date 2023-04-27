@@ -123,10 +123,10 @@ namespace Gumunufu.Forms
         }
 
         /// <summary>
-        /// 
+        /// Insert from monzo file click event
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
         private void HomeMenuStrupInsertFromFileMonzo_Click(object sender, EventArgs e)
         {
             // Create and show open file dialog
