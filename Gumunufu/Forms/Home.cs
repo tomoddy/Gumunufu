@@ -1,3 +1,4 @@
+using Gumunufu.Globals;
 using Gumunufu.Helpers;
 using Gumunufu.Helpers.FileImport;
 using Gumunufu.Objects;
@@ -81,13 +82,13 @@ namespace Gumunufu.Forms
         {
             if (count > 0)
             {
-                HomeMenuStrip.Items["HomeMenuStripCategorise"].Enabled = true;
-                HomeMenuStrip.Items["HomeMenuStripCategorise"].Text = $"Categorise ({count})";
+                HomeMenuStrip.Items[Resource.Argument.STRIP_CATEGORISE].Enabled = true;
+                HomeMenuStrip.Items[Resource.Argument.STRIP_CATEGORISE].Text = Resource.Message.Categorise(count);
             }
             else
             {
-                HomeMenuStrip.Items["HomeMenuStripCategorise"].Enabled = false;
-                HomeMenuStrip.Items["HomeMenuStripCategorise"].Text = "Categorise";
+                HomeMenuStrip.Items[Resource.Argument.STRIP_CATEGORISE].Enabled = false;
+                HomeMenuStrip.Items[Resource.Argument.STRIP_CATEGORISE].Text = Resource.Message.CATEGORISE;
             }
         }
 
@@ -99,7 +100,7 @@ namespace Gumunufu.Forms
         private void HomeMenuStripInsertFromFileLloyds_Click(object sender, EventArgs e)
         {
             // Create and show open file dialog
-            OpenFileDialog fileDialog = new() { Filter = Config.CSV_FILTER };
+            OpenFileDialog fileDialog = new() { Filter = Resource.Argument.CSV_FILTER };
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 // Create dialog to get account name
@@ -113,10 +114,10 @@ namespace Gumunufu.Forms
                         Client.UpdateTransactions(TransactionSet);
                         Home_Load(sender, e);
                     }
-                    catch (FileImportException)
+                    catch (FileImportException ex)
                     {
                         // Show error message
-                        MessageBox.Show("Data from file could not be imported.", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Resource.Message.ImportError(ex), Resource.Message.IMPORT_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -130,7 +131,7 @@ namespace Gumunufu.Forms
         private void HomeMenuStrupInsertFromFileMonzo_Click(object sender, EventArgs e)
         {
             // Create and show open file dialog
-            OpenFileDialog fileDialog = new() { Filter = Config.CSV_FILTER };
+            OpenFileDialog fileDialog = new() { Filter = Resource.Argument.CSV_FILTER };
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 // Create dialog to get account name
@@ -144,10 +145,10 @@ namespace Gumunufu.Forms
                         Client.UpdateTransactions(TransactionSet);
                         Home_Load(sender, e);
                     }
-                    catch (FileImportException)
+                    catch (FileImportException ex)
                     {
                         // Show error message
-                        MessageBox.Show("Data from file could not be imported.", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Resource.Message.ImportError(ex), Resource.Message.IMPORT_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -213,7 +214,7 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void HomeMenuStrupViewTotalByAccount_Click(object sender, EventArgs e)
         {
-            TotalBy totalByCategory = new(Config.ACCOUNT, TransactionSet.Transactions);
+            TotalBy totalByCategory = new(Resource.Literal.ACCOUNT, TransactionSet.Transactions);
             totalByCategory.ShowDialog();
         }
 
@@ -224,7 +225,7 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void HomeMenuStripViewTotalByCategory_Click(object sender, EventArgs e)
         {
-            TotalBy totalByCategory = new(Config.CATEGORY, TransactionSet.Transactions);
+            TotalBy totalByCategory = new(Resource.Literal.CATEGORY, TransactionSet.Transactions);
             totalByCategory.ShowDialog();
         }
 
@@ -235,7 +236,7 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void HomeMenuStripViewTotalByName_Click(object sender, EventArgs e)
         {
-            TotalBy totalByCategory = new(Config.NAME, TransactionSet.Transactions);
+            TotalBy totalByCategory = new(Resource.Literal.NAME, TransactionSet.Transactions);
             totalByCategory.ShowDialog();
         }
 
@@ -250,20 +251,20 @@ namespace Gumunufu.Forms
         private void PopulateTable()
         {
             // Add month header
-            HomeTable.Columns.Add(Config.MONTH, Config.MONTH);
+            HomeTable.Columns.Add(Resource.Literal.MONTH, Resource.Literal.MONTH);
 
             // Add category headers
             foreach (string? category in TransactionSet.Categories)
             {
                 int categoryIndex = HomeTable.Columns.Add(category, category);
-                HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = Config.CURRENCY_FORMAT;
+                HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = Resource.Argument.CURRENCY_FORMAT;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
 
             // Add total header
-            int totalIndex = HomeTable.Columns.Add(Config.TOTAL, Config.TOTAL);
-            HomeTable.Columns[totalIndex].DefaultCellStyle.Format = Config.CURRENCY_FORMAT;
+            int totalIndex = HomeTable.Columns.Add(Resource.Literal.TOTAL, Resource.Literal.TOTAL);
+            HomeTable.Columns[totalIndex].DefaultCellStyle.Format = Resource.Argument.CURRENCY_FORMAT;
             HomeTable.Columns[totalIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             HomeTable.Columns[totalIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
@@ -277,7 +278,7 @@ namespace Gumunufu.Forms
                 float rowTotal = 0;
 
                 // Add date
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = month.ToString(Config.MONTH_YEAR_DATE), Tag = month });
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = month.ToString(Resource.Argument.MONTH_YEAR_DATE), Tag = month });
 
                 // Add category totals
                 foreach (string category in TransactionSet.Categories)
@@ -303,14 +304,14 @@ namespace Gumunufu.Forms
             ColourCells(TransactionSet.Categories, new ColourCalculator(cellValues.First(), cellValues.Last()));
 
             // Colour total column
-            ColourCells(new List<string> { Config.TOTAL }, new ColourCalculator(cellValues.First(), cellValues.Last()));
+            ColourCells(new List<string> { Resource.Literal.TOTAL }, new ColourCalculator(cellValues.First(), cellValues.Last()));
 
             // Resize columns
             HomeTable.AutoResizeColumns();
 
             // Size form
-            Width = HomeTable.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + Config.DGV_MARGIN;
-            Height = HomeTable.Rows.GetRowsHeight(DataGridViewElementStates.Visible) + Config.DGV_MARGIN;
+            Width = HomeTable.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + Resource.Argument.DGV_MARGIN;
+            Height = HomeTable.Rows.GetRowsHeight(DataGridViewElementStates.Visible) + Resource.Argument.DGV_MARGIN;
         }
 
         /// <summary>

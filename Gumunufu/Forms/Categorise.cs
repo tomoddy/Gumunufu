@@ -1,4 +1,5 @@
-﻿using Gumunufu.Objects;
+﻿using Gumunufu.Globals;
+using Gumunufu.Objects;
 using System.Diagnostics;
 
 namespace Gumunufu.Forms
@@ -60,10 +61,10 @@ namespace Gumunufu.Forms
             Top = BaseLocation.Y + OFFSET;
 
             // Load transaction info
-            CategoriseDateLabel.Text = Transaction.Date.ToString(Config.SHORT_DATE);
+            CategoriseDateLabel.Text = Transaction.Date.ToString(Resource.Argument.SHORT_DATE);
             CategoriseAccountLabel.Text = Transaction.Account;
             CategoriseNameLabel.Text = Transaction.Name;
-            CategoriseAmountLabel.Text = Transaction.Amount.ToString(Config.CURRENCY_FORMAT);
+            CategoriseAmountLabel.Text = Transaction.Amount.ToString(Resource.Argument.CURRENCY_FORMAT);
 
             // Load list view
             CategoriseListView.BeginUpdate();
@@ -80,7 +81,7 @@ namespace Gumunufu.Forms
         private void CategoriseNameLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LinkLabel linkLabel = (LinkLabel)sender;
-            Process.Start(Config.BrowserPath, $"{Config.SEARCH_QUERY}{linkLabel.Text.Replace(' ', '+')}");
+            Process.Start(Config.BrowserPath, $"{Resource.Argument.SEARCH_QUERY}{linkLabel.Text.Replace(Resource.Character.SPACE, Resource.Character.PLUS)}");
         }
 
         /// <summary>

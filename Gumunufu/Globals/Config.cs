@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Gumunufu
+namespace Gumunufu.Globals
 {
     /// <summary>
     /// Config
@@ -42,75 +42,6 @@ namespace Gumunufu
         /// <param name="result">Result</param>
         /// <returns>True if parsed, false otherwise</returns>
         private delegate bool TryParseHandler<T>(string value, out T result);
-
-        #endregion
-
-        #region Global Constants
-
-        /// <summary>
-        /// Date
-        /// </summary>
-        public const string DATE = "Date";
-
-        /// <summary>
-        /// Account
-        /// </summary>
-        public const string ACCOUNT = "Account";
-
-        /// <summary>
-        /// Category
-        /// </summary>
-        public const string CATEGORY = "Category";
-
-        /// <summary>
-        /// Name
-        /// </summary>
-        public const string NAME = "Name";
-
-        /// <summary>
-        /// Amount
-        /// </summary>
-        public const string AMOUNT = "Amount";
-
-        /// <summary>
-        /// Month label
-        /// </summary>
-        public const string MONTH = "Month";
-
-        /// <summary>
-        /// Total label
-        /// </summary>
-        public const string TOTAL = "Total";
-
-        /// <summary>
-        /// Short date format
-        /// </summary>
-        public const string SHORT_DATE = "dd/MM/yyyy";
-
-        /// <summary>
-        /// Month/year date format
-        /// </summary>
-        public const string MONTH_YEAR_DATE = "MMM yyyy";
-
-        /// <summary>
-        /// Margin for resizing form
-        /// </summary>
-        public const int DGV_MARGIN = 200;
-
-        /// <summary>
-        /// CSV file dialog format
-        /// </summary>
-        public const string CSV_FILTER = "CSV Files (*.csv)|*.csv";
-
-        /// <summary>
-        /// Currency cell format
-        /// </summary>
-        public const string CURRENCY_FORMAT = "c2"; 
-
-        /// <summary>
-        /// Search query
-        /// </summary>
-        public const string SEARCH_QUERY = "https://www.google.com/search?q=";
 
         #endregion
 

@@ -1,4 +1,5 @@
-﻿using Gumunufu.Objects;
+﻿using Gumunufu.Globals;
+using Gumunufu.Objects;
 
 namespace Gumunufu.Helpers.FileImport
 {
@@ -46,7 +47,7 @@ namespace Gumunufu.Helpers.FileImport
             catch (Exception ex)
             {
                 // Throw generic exception
-                throw new FileImportException("Import failed", ex);
+                throw new FileImportException(Resource.Message.IMPORT_ERROR, ex);
             }
         }
 
@@ -94,7 +95,7 @@ namespace Gumunufu.Helpers.FileImport
             catch (Exception ex)
             {
                 // Throw generic exception
-                throw new FileImportException("Import failed", ex);
+                throw new FileImportException(Resource.Message.IMPORT_ERROR, ex);
             }
         }
     }

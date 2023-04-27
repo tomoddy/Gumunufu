@@ -1,4 +1,5 @@
-﻿using Gumunufu.Objects;
+﻿using Gumunufu.Globals;
+using Gumunufu.Objects;
 using System.ComponentModel;
 using System.Globalization;
 
@@ -41,12 +42,12 @@ namespace Gumunufu.Forms
         {
             // Add columns
             TotalByTable.Columns.Add(Argument, Argument);
-            TotalByTable.Columns.Add(Config.AMOUNT, Config.AMOUNT);
+            TotalByTable.Columns.Add(Resource.Literal.AMOUNT, Resource.Literal.AMOUNT);
 
             // Format amount column
-            TotalByTable.Columns[Config.AMOUNT].DefaultCellStyle.Format = Config.CURRENCY_FORMAT;
-            TotalByTable.Columns[Config.AMOUNT].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
-            TotalByTable.Columns[Config.AMOUNT].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            TotalByTable.Columns[Resource.Literal.AMOUNT].DefaultCellStyle.Format = Resource.Argument.CURRENCY_FORMAT;
+            TotalByTable.Columns[Resource.Literal.AMOUNT].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
+            TotalByTable.Columns[Resource.Literal.AMOUNT].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             // Get values
             Dictionary<string, float> nameTotalSet = GetValues(Argument);
@@ -65,7 +66,7 @@ namespace Gumunufu.Forms
             TotalByTable.Sort(TotalByTable.Columns[Argument], ListSortDirection.Ascending);
 
             // Size form
-            Width = TotalByTable.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + Config.DGV_MARGIN;
+            Width = TotalByTable.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + Resource.Argument.DGV_MARGIN;
         }
 
         /// <summary>
@@ -84,11 +85,11 @@ namespace Gumunufu.Forms
             {
                 if (label is not null)
                 {
-                    if (argument == Config.ACCOUNT)
+                    if (argument == Resource.Literal.ACCOUNT)
                         retVal.Add(label, Transactions.Where(t => t.Account == label).Sum(t => t.Amount));
-                    else if (argument == Config.CATEGORY)
+                    else if (argument == Resource.Literal.CATEGORY)
                         retVal.Add(label, Transactions.Where(t => t.Category == label).Sum(t => t.Amount));
-                    else if (argument == Config.NAME)
+                    else if (argument == Resource.Literal.NAME)
                         retVal.Add(label, Transactions.Where(t => t.Name == label).Sum(t => t.Amount));
                 }
             }
@@ -106,9 +107,9 @@ namespace Gumunufu.Forms
         {
             return argument switch
             {
-                Config.ACCOUNT => Transactions.Select(t => t.Account).Distinct().ToList(),
-                Config.CATEGORY => Transactions.Select(t => t.Category).Distinct().ToList(),
-                Config.NAME => Transactions.Select(t => t.Name).Distinct().ToList(),
+                Resource.Literal.ACCOUNT => Transactions.Select(t => t.Account).Distinct().ToList(),
+                Resource.Literal.CATEGORY => Transactions.Select(t => t.Category).Distinct().ToList(),
+                Resource.Literal.NAME => Transactions.Select(t => t.Name).Distinct().ToList(),
                 _ => new List<string?>(),
             };
         }

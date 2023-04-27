@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Gumunufu.Globals;
 using Gumunufu.Objects;
 using System.Globalization;
 
@@ -32,7 +33,7 @@ namespace Gumunufu.Helpers
             // Create reader
             using StreamReader streamReader = new(DatabasePath);
             using CsvReader csvReader = new(streamReader, CultureInfo.CurrentCulture);
-            csvReader.Context.TypeConverterOptionsCache.GetOptions<string>().NullValues.Add("");
+            csvReader.Context.TypeConverterOptionsCache.GetOptions<string>().NullValues.Add(string.Empty);
             csvReader.Context.RegisterClassMap<DataReaderMap>();
 
             // Read and return records
@@ -47,7 +48,7 @@ namespace Gumunufu.Helpers
         {
             // Copy database to new temp file
             string extension = Path.GetExtension(DatabasePath);
-            string tempPath = $"{Path.ChangeExtension(DatabasePath, string.Empty)}Temp{extension}";
+            string tempPath = $"{Path.ChangeExtension(DatabasePath, string.Empty)}{Resource.Argument.TEMP}{extension}";
             File.Copy(DatabasePath, tempPath);
 
             // Create writer

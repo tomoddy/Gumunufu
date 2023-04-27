@@ -1,4 +1,6 @@
-﻿namespace Gumunufu.Objects
+﻿using Gumunufu.Globals;
+
+namespace Gumunufu.Objects
 {
     /// <summary>
     /// Transaction set

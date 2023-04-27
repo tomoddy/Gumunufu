@@ -1,4 +1,5 @@
-﻿using Gumunufu.Objects;
+﻿using Gumunufu.Globals;
+using Gumunufu.Objects;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -31,6 +32,7 @@ namespace Gumunufu.Forms
         private void ManualAdd_Load(object sender, EventArgs e)
         {
             ManualAddDatePicker.Value = DateTime.Now;
+            ManualAddAmountInput.Text = Resource.Argument.CURRENCT_DEFAULT;
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace Gumunufu.Forms
             NewTransaction.Category = ManualAddCategoryInput.Text;
 
             // Parse float and set value
-            if (float.TryParse(ManualAddAmountInput.Text.Replace(",", string.Empty).Replace("£", string.Empty).Replace(".", string.Empty).TrimStart('0'), out float value))
+            if (float.TryParse(ManualAddAmountInput.Text.Replace(Resource.Literal.COMMA, string.Empty).Replace(Resource.Literal.POUND, string.Empty).Replace(Resource.Literal.DOT, string.Empty).TrimStart(Resource.Character.ZERO), out float value))
             {
                 // Invert value if negative
                 if (ManualAddNegativeCheckBox.Checked)
@@ -68,12 +70,12 @@ namespace Gumunufu.Forms
         private void ManualAddAmountInput_TextChanged(object sender, EventArgs e)
         {
             // Remove previous formatting and parse to float
-            if (float.TryParse(ManualAddAmountInput.Text.Replace(",", string.Empty).Replace("£", string.Empty).Replace(".", string.Empty).TrimStart('0'), out float value))
+            if (float.TryParse(ManualAddAmountInput.Text.Replace(Resource.Literal.COMMA, string.Empty).Replace(Resource.Literal.POUND, string.Empty).Replace(Resource.Literal.DOT, string.Empty).TrimStart(Resource.Character.ZERO), out float value))
             {
                 // Format the text as currency
                 value /= 100;
                 ManualAddAmountInput.TextChanged -= ManualAddAmountInput_TextChanged!;
-                ManualAddAmountInput.Text = string.Format(CultureInfo.CreateSpecificCulture("en-GB"), "{0:C2}", value);
+                ManualAddAmountInput.Text = string.Format(CultureInfo.CreateSpecificCulture(Resource.Argument.LOCALE), Resource.Argument.CURRENCY_FORMAT_INPUT, value);
                 ManualAddAmountInput.TextChanged += ManualAddAmountInput_TextChanged!;
                 ManualAddAmountInput.Select(ManualAddAmountInput.Text.Length, 0);
             }
@@ -85,7 +87,7 @@ namespace Gumunufu.Forms
             // Reset text if not valid
             if (!validFormat)
             {
-                ManualAddAmountInput.Text = "£0.00";
+                ManualAddAmountInput.Text = Resource.Argument.CURRENCT_DEFAULT;
                 ManualAddAmountInput.Select(ManualAddAmountInput.Text.Length, 0);
             }
         }
@@ -97,7 +99,7 @@ namespace Gumunufu.Forms
         /// <returns>True if valid, false otherwise</returns>
         private static bool FormatIsValid(string text)
         {
-            Regex money = new(@"^\£(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$");
+            Regex money = new(Resource.Argument.CURRENCY_REGEX);
             return money.IsMatch(text);
         }
     }

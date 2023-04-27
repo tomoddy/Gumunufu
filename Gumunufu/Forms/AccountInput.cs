@@ -1,4 +1,6 @@
-﻿namespace Gumunufu.Forms
+﻿using Gumunufu.Globals;
+
+namespace Gumunufu.Forms
 {
     /// <summary>
     /// Account input form
