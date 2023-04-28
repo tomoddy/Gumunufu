@@ -1,4 +1,5 @@
 using Gumunufu.Forms;
+using Gumunufu.Globals;
 
 namespace Gumunufu
 {
@@ -10,8 +11,15 @@ namespace Gumunufu
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Home());
+            try
+            {
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Home());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Resource.Message.UNKNOWN_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

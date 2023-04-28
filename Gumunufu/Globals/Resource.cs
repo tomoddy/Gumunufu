@@ -90,6 +90,11 @@
             /// <summary>
             /// Import error
             /// </summary>
+            public const string UNKNOWN_ERROR = "Unknown Error";
+
+            /// <summary>
+            /// Import error
+            /// </summary>
             public const string IMPORT_ERROR = "Import Error";
 
             /// <summary>
