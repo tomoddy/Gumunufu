@@ -9,3 +9,4 @@
 	* ~~Lloyds~~
 	* ~~Monzo~~
 	* HSBC
+* Edit/delete transactions
