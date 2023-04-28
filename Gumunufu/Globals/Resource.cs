@@ -188,5 +188,31 @@
             /// </summary>
             public const string STRIP_CATEGORISE = "HomeMenuStripCategorise";
         }
+
+        /// <summary>
+        /// Firebase strings
+        /// </summary>
+        public static class Firebase
+        {
+            /// <summary>
+            /// Google applications credentials
+            /// </summary>
+            public const string GOOGLE_APPLICATION_CREDENTIALS = "GOOGLE_APPLICATION_CREDENTIALS";
+
+            /// <summary>
+            /// Users
+            /// </summary>
+            public const string USERS = "Users";
+
+            /// <summary>
+            /// TransactionSets
+            /// </summary>
+            public const string TRANSACTION_SETS = "TransactionSets";
+
+            /// <summary>
+            /// Transactions
+            /// </summary>
+            public const string TRANSACTIONS = "Transactions";
+        }
     }
 }

@@ -2,7 +2,7 @@ using Gumunufu.Globals;
 using Gumunufu.Helpers;
 using Gumunufu.Helpers.DataImport;
 using Gumunufu.Objects;
-using Gumunufu.Storage.Csv;
+using Gumunufu.Storage;
 using System.Globalization;
 
 namespace Gumunufu.Forms
@@ -15,9 +15,9 @@ namespace Gumunufu.Forms
         #region Properties and Events
 
         /// <summary>
-        /// Data client
+        /// Storage client
         /// </summary>
-        private CsvClient Client { get; set; }
+        private IStorageClient Client { get; set; }
 
         /// <summary>
         /// Transaction set
@@ -31,7 +31,7 @@ namespace Gumunufu.Forms
         {
             InitializeComponent();
             Icon = new Icon(Config.Icon);
-            Client = new(Config.DatabasePath);
+            Client = new StorageClient().CreateClient(Enum.Parse<StorageType>(Config.StorageType));
             TransactionSet = Client.GetTransactions();
         }
 

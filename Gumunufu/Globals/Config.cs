@@ -53,9 +53,29 @@ namespace Gumunufu.Globals
         public static string Icon => Get("Icon");
 
         /// <summary>
+        /// Storage type
+        /// </summary>
+        public static string StorageType => Get("StorageType");
+
+        /// <summary>
         /// Database path
         /// </summary>
-        public static string DatabasePath => Get("DatabasePath");
+        public static string CsvPath => Get("CsvPath");
+
+        /// <summary>
+        /// Firebase key path
+        /// </summary>
+        public static string FirebaseKeyPath => Get("FirebaseKeyPath");
+
+        /// <summary>
+        /// Firebase database name
+        /// </summary>
+        public static string FirebaseDatabaseName => Get("FirebaseDatabaseName");
+
+        /// <summary>
+        /// Firebase username
+        /// </summary>
+        public static string FirebaseUsername => Get("FirebaseUsername");
 
         /// <summary>
         /// Browser path

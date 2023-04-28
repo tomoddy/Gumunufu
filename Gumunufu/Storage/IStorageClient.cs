@@ -11,12 +11,12 @@ namespace Gumunufu.Storage
         /// Get transactions from database
         /// </summary>
         /// <returns>List of transactions</returns>
-        internal TransactionSet GetTransactions();
+        internal abstract TransactionSet GetTransactions();
 
         /// <summary>
         /// Update database
         /// </summary>
         /// <param name="transactionSet">Transaction set</param>
-        internal void UpdateTransactions(TransactionSet transactionSet);
+        internal abstract void UpdateTransactions(TransactionSet transactionSet);
     }
 }
