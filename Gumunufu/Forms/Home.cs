@@ -260,9 +260,15 @@ namespace Gumunufu.Forms
             // Show query in transaction view if ok
             if (querySelector.ShowDialog() == DialogResult.OK)
             {
-                TransactionView transactionView = new(querySelector.Transactions);
-                transactionView.Text = querySelector.Text;
-                transactionView.ShowDialog();
+                // Check if query has returned results
+                if (querySelector.Transactions.Count > 0)
+                {
+                    TransactionView transactionView = new(querySelector.Transactions);
+                    transactionView.Text = querySelector.Text;
+                    transactionView.ShowDialog();
+                }
+                else
+                    MessageBox.Show(Resource.Message.NOT_FOUND_TEXT, Resource.Message.NOT_FOUND, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

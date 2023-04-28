@@ -133,6 +133,16 @@
             {
                 return $"{category} in {month.ToString(Argument.MONTH_YEAR_DATE)} ({total.ToString(Argument.CURRENCY_FORMAT)})";
             }
+
+            /// <summary>
+            /// Query not found
+            /// </summary>
+            public const string NOT_FOUND = "No Results";
+
+            /// <summary>
+            /// Query not found text
+            /// </summary>
+            public const string NOT_FOUND_TEXT = "Query returned no results.";
         }
 
         /// <summary>
