@@ -1,5 +1,6 @@
 using Gumunufu.Globals;
 using Gumunufu.Helpers;
+using Gumunufu.Helpers.Csv;
 using Gumunufu.Helpers.DataImport;
 using Gumunufu.Objects;
 using System.Globalization;
@@ -16,7 +17,7 @@ namespace Gumunufu.Forms
         /// <summary>
         /// Data client
         /// </summary>
-        private DataClient Client { get; set; }
+        private CsvClient Client { get; set; }
 
         /// <summary>
         /// Transaction set

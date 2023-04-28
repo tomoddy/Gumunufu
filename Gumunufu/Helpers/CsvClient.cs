@@ -3,12 +3,12 @@ using Gumunufu.Globals;
 using Gumunufu.Objects;
 using System.Globalization;
 
-namespace Gumunufu.Helpers
+namespace Gumunufu.Helpers.Csv
 {
     /// <summary>
     /// Data reader
     /// </summary>
-    internal class DataClient
+    internal class CsvClient
     {
         /// <summary>
         /// Path
@@ -19,7 +19,7 @@ namespace Gumunufu.Helpers
         /// Default constructor
         /// </summary>
         /// <param name="databasePath">Path</param>
-        internal DataClient(string databasePath)
+        internal CsvClient(string databasePath)
         {
             DatabasePath = databasePath;
         }
