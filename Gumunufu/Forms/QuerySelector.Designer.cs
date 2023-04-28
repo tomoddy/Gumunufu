@@ -43,6 +43,8 @@
             this.QuerySelectorSubmit = new System.Windows.Forms.Button();
             this.QuerySelectorMinNegativeCheckbox = new System.Windows.Forms.CheckBox();
             this.QuerySelectorMaxNegativeCheckbox = new System.Windows.Forms.CheckBox();
+            this.QuerySelectorCategoryAllCheckBox = new System.Windows.Forms.CheckBox();
+            this.QuerySelectorAccountAllCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // QuerySelectorStartDatePicker
@@ -80,16 +82,16 @@
             // QuerySelectorAccountInput
             // 
             this.QuerySelectorAccountInput.FormattingEnabled = true;
-            this.QuerySelectorAccountInput.Location = new System.Drawing.Point(12, 102);
+            this.QuerySelectorAccountInput.Location = new System.Drawing.Point(12, 109);
             this.QuerySelectorAccountInput.MultiColumn = true;
             this.QuerySelectorAccountInput.Name = "QuerySelectorAccountInput";
             this.QuerySelectorAccountInput.Size = new System.Drawing.Size(606, 88);
-            this.QuerySelectorAccountInput.TabIndex = 2;
+            this.QuerySelectorAccountInput.TabIndex = 3;
             // 
             // QuerySelectorAccountLabel
             // 
             this.QuerySelectorAccountLabel.AutoSize = true;
-            this.QuerySelectorAccountLabel.Location = new System.Drawing.Point(12, 74);
+            this.QuerySelectorAccountLabel.Location = new System.Drawing.Point(12, 75);
             this.QuerySelectorAccountLabel.Name = "QuerySelectorAccountLabel";
             this.QuerySelectorAccountLabel.Size = new System.Drawing.Size(86, 25);
             this.QuerySelectorAccountLabel.TabIndex = 5;
@@ -98,7 +100,7 @@
             // QuerySelectorMaxLabel
             // 
             this.QuerySelectorMaxLabel.AutoSize = true;
-            this.QuerySelectorMaxLabel.Location = new System.Drawing.Point(12, 380);
+            this.QuerySelectorMaxLabel.Location = new System.Drawing.Point(12, 399);
             this.QuerySelectorMaxLabel.Name = "QuerySelectorMaxLabel";
             this.QuerySelectorMaxLabel.Size = new System.Drawing.Size(170, 25);
             this.QuerySelectorMaxLabel.TabIndex = 7;
@@ -107,7 +109,7 @@
             // QuerySelectorMinLabel
             // 
             this.QuerySelectorMinLabel.AutoSize = true;
-            this.QuerySelectorMinLabel.Location = new System.Drawing.Point(12, 318);
+            this.QuerySelectorMinLabel.Location = new System.Drawing.Point(12, 333);
             this.QuerySelectorMinLabel.Name = "QuerySelectorMinLabel";
             this.QuerySelectorMinLabel.Size = new System.Drawing.Size(167, 25);
             this.QuerySelectorMinLabel.TabIndex = 6;
@@ -115,33 +117,33 @@
             // 
             // QuerySelectorMaxInput
             // 
-            this.QuerySelectorMaxInput.Location = new System.Drawing.Point(12, 408);
+            this.QuerySelectorMaxInput.Location = new System.Drawing.Point(12, 427);
             this.QuerySelectorMaxInput.Name = "QuerySelectorMaxInput";
-            this.QuerySelectorMaxInput.Size = new System.Drawing.Size(484, 31);
-            this.QuerySelectorMaxInput.TabIndex = 6;
+            this.QuerySelectorMaxInput.Size = new System.Drawing.Size(606, 31);
+            this.QuerySelectorMaxInput.TabIndex = 8;
             this.QuerySelectorMaxInput.TextChanged += new System.EventHandler(this.QuerySelectorMaxInput_TextChanged);
             // 
             // QuerySelectorMinInput
             // 
-            this.QuerySelectorMinInput.Location = new System.Drawing.Point(12, 346);
+            this.QuerySelectorMinInput.Location = new System.Drawing.Point(12, 361);
             this.QuerySelectorMinInput.Name = "QuerySelectorMinInput";
-            this.QuerySelectorMinInput.Size = new System.Drawing.Size(484, 31);
-            this.QuerySelectorMinInput.TabIndex = 4;
+            this.QuerySelectorMinInput.Size = new System.Drawing.Size(606, 31);
+            this.QuerySelectorMinInput.TabIndex = 7;
             this.QuerySelectorMinInput.TextChanged += new System.EventHandler(this.QuerySelectorMinInput_TextChanged);
             // 
             // QuerySelectorCategoryInput
             // 
             this.QuerySelectorCategoryInput.FormattingEnabled = true;
-            this.QuerySelectorCategoryInput.Location = new System.Drawing.Point(12, 221);
+            this.QuerySelectorCategoryInput.Location = new System.Drawing.Point(12, 238);
             this.QuerySelectorCategoryInput.MultiColumn = true;
             this.QuerySelectorCategoryInput.Name = "QuerySelectorCategoryInput";
             this.QuerySelectorCategoryInput.Size = new System.Drawing.Size(606, 88);
-            this.QuerySelectorCategoryInput.TabIndex = 3;
+            this.QuerySelectorCategoryInput.TabIndex = 5;
             // 
             // QuerySelectorCategoryLabel
             // 
             this.QuerySelectorCategoryLabel.AutoSize = true;
-            this.QuerySelectorCategoryLabel.Location = new System.Drawing.Point(12, 193);
+            this.QuerySelectorCategoryLabel.Location = new System.Drawing.Point(12, 204);
             this.QuerySelectorCategoryLabel.Name = "QuerySelectorCategoryLabel";
             this.QuerySelectorCategoryLabel.Size = new System.Drawing.Size(93, 25);
             this.QuerySelectorCategoryLabel.TabIndex = 11;
@@ -149,10 +151,10 @@
             // 
             // QuerySelectorSubmit
             // 
-            this.QuerySelectorSubmit.Location = new System.Drawing.Point(506, 459);
+            this.QuerySelectorSubmit.Location = new System.Drawing.Point(506, 464);
             this.QuerySelectorSubmit.Name = "QuerySelectorSubmit";
             this.QuerySelectorSubmit.Size = new System.Drawing.Size(112, 34);
-            this.QuerySelectorSubmit.TabIndex = 12;
+            this.QuerySelectorSubmit.TabIndex = 10;
             this.QuerySelectorSubmit.Text = "Submit";
             this.QuerySelectorSubmit.UseVisualStyleBackColor = true;
             this.QuerySelectorSubmit.Click += new System.EventHandler(this.QuerySelectorSubmit_Click);
@@ -160,28 +162,52 @@
             // QuerySelectorMinNegativeCheckbox
             // 
             this.QuerySelectorMinNegativeCheckbox.AutoSize = true;
-            this.QuerySelectorMinNegativeCheckbox.Location = new System.Drawing.Point(502, 348);
+            this.QuerySelectorMinNegativeCheckbox.Location = new System.Drawing.Point(502, 332);
             this.QuerySelectorMinNegativeCheckbox.Name = "QuerySelectorMinNegativeCheckbox";
             this.QuerySelectorMinNegativeCheckbox.Size = new System.Drawing.Size(116, 29);
-            this.QuerySelectorMinNegativeCheckbox.TabIndex = 5;
+            this.QuerySelectorMinNegativeCheckbox.TabIndex = 6;
             this.QuerySelectorMinNegativeCheckbox.Text = "Negative?";
             this.QuerySelectorMinNegativeCheckbox.UseVisualStyleBackColor = true;
             // 
             // QuerySelectorMaxNegativeCheckbox
             // 
             this.QuerySelectorMaxNegativeCheckbox.AutoSize = true;
-            this.QuerySelectorMaxNegativeCheckbox.Location = new System.Drawing.Point(502, 410);
+            this.QuerySelectorMaxNegativeCheckbox.Location = new System.Drawing.Point(502, 398);
             this.QuerySelectorMaxNegativeCheckbox.Name = "QuerySelectorMaxNegativeCheckbox";
             this.QuerySelectorMaxNegativeCheckbox.Size = new System.Drawing.Size(116, 29);
-            this.QuerySelectorMaxNegativeCheckbox.TabIndex = 7;
+            this.QuerySelectorMaxNegativeCheckbox.TabIndex = 8;
             this.QuerySelectorMaxNegativeCheckbox.Text = "Negative?";
             this.QuerySelectorMaxNegativeCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // QuerySelectorCategoryAllCheckBox
+            // 
+            this.QuerySelectorCategoryAllCheckBox.AutoSize = true;
+            this.QuerySelectorCategoryAllCheckBox.Location = new System.Drawing.Point(502, 203);
+            this.QuerySelectorCategoryAllCheckBox.Name = "QuerySelectorCategoryAllCheckBox";
+            this.QuerySelectorCategoryAllCheckBox.Size = new System.Drawing.Size(109, 29);
+            this.QuerySelectorCategoryAllCheckBox.TabIndex = 4;
+            this.QuerySelectorCategoryAllCheckBox.Text = "Select All";
+            this.QuerySelectorCategoryAllCheckBox.UseVisualStyleBackColor = true;
+            this.QuerySelectorCategoryAllCheckBox.CheckedChanged += new System.EventHandler(this.QuerySelectorCategoryAllCheckBox_CheckedChanged);
+            // 
+            // QuerySelectorAccountAllCheckBox
+            // 
+            this.QuerySelectorAccountAllCheckBox.AutoSize = true;
+            this.QuerySelectorAccountAllCheckBox.Location = new System.Drawing.Point(502, 74);
+            this.QuerySelectorAccountAllCheckBox.Name = "QuerySelectorAccountAllCheckBox";
+            this.QuerySelectorAccountAllCheckBox.Size = new System.Drawing.Size(109, 29);
+            this.QuerySelectorAccountAllCheckBox.TabIndex = 2;
+            this.QuerySelectorAccountAllCheckBox.Text = "Select All";
+            this.QuerySelectorAccountAllCheckBox.UseVisualStyleBackColor = true;
+            this.QuerySelectorAccountAllCheckBox.CheckedChanged += new System.EventHandler(this.QuerySelectorAccountAllCheckBox_CheckedChanged);
             // 
             // QuerySelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 504);
+            this.ClientSize = new System.Drawing.Size(632, 512);
+            this.Controls.Add(this.QuerySelectorAccountAllCheckBox);
+            this.Controls.Add(this.QuerySelectorCategoryAllCheckBox);
             this.Controls.Add(this.QuerySelectorMaxNegativeCheckbox);
             this.Controls.Add(this.QuerySelectorMinNegativeCheckbox);
             this.Controls.Add(this.QuerySelectorSubmit);
@@ -225,5 +251,7 @@
         private Button QuerySelectorSubmit;
         private CheckBox QuerySelectorMinNegativeCheckbox;
         private CheckBox QuerySelectorMaxNegativeCheckbox;
+        private CheckBox QuerySelectorCategoryAllCheckBox;
+        private CheckBox QuerySelectorAccountAllCheckBox;
     }
 }

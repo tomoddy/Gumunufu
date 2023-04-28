@@ -126,15 +126,41 @@ namespace Gumunufu.Forms
                 Transactions = Transactions
                     .Where(t => t.Date >= QuerySelectorStartDatePicker.Value)
                     .Where(t => t.Date <= QuerySelectorEndDatePicker.Value)
-                    .Where(t => selectedAccounts.Contains(t.Account!))
-                    .Where(t => selectedCategories.Contains(t.Category!))
                     .Where(t => t.Amount >= minInput)
                     .Where(t => t.Amount <= maxInput)
                     .ToList();
 
+                // Check if all accounts selected
+                if (!QuerySelectorAccountAllCheckBox.Checked)
+                    Transactions = Transactions.Where(t => selectedAccounts.Contains(t.Account!)).ToList();
+
+                // Check if all categories selected
+                if (!QuerySelectorCategoryAllCheckBox.Checked)
+                    Transactions = Transactions.Where(t => selectedCategories.Contains(t.Category!)).ToList();
+
                 // Set dialog result
                 DialogResult = DialogResult.OK;
             }
+        }
+
+        /// <summary>
+        /// All accounts checkbox changed event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void QuerySelectorAccountAllCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            QuerySelectorAccountInput.Enabled = !QuerySelectorAccountAllCheckBox.Checked;
+        }
+
+        /// <summary>
+        /// All categories checkbox changed event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void QuerySelectorCategoryAllCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            QuerySelectorCategoryInput.Enabled = !QuerySelectorCategoryAllCheckBox.Checked;
         }
 
         /// <summary>
