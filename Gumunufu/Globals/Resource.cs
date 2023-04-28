@@ -121,6 +121,18 @@
             {
                 return $"{CATEGORISE} ({count})";
             }
+
+            /// <summary>
+            /// Cell expansion text
+            /// </summary>
+            /// <param name="category">Category</param>
+            /// <param name="month">Month</param>
+            /// <param name="total">Total</param>
+            /// <returns>Text</returns>
+            internal static string CellExpansion(string category, DateTime month, float total)
+            {
+                return $"{category} in {month.ToString(Argument.MONTH_YEAR_DATE)} ({total.ToString(Argument.CURRENCY_FORMAT)})";
+            }
         }
 
         /// <summary>

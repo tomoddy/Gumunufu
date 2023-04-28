@@ -6,6 +6,16 @@
     internal class CellData
     {
         /// <summary>
+        /// Category
+        /// </summary>
+        internal string Category { get; set; }
+
+        /// <summary>
+        /// Month
+        /// </summary>
+        internal DateTime Month { get; set; }
+
+        /// <summary>
         /// Total
         /// </summary>
         internal float Total { get; set; }
@@ -18,10 +28,14 @@
         /// <summary>
         /// Default constructor
         /// </summary>
+        /// <param name="category">Category</param>
+        /// <param name="month">Month</param>
         /// <param name="total">Total</param>
         /// <param name="transactions">List of transactions</param>
-        internal CellData(float total, List<Transaction> transactions)
+        internal CellData(string category, DateTime month, float total, List<Transaction> transactions)
         {
+            Category = category;
+            Month = month;
             Total = total;
             Transactions = transactions;
         }
@@ -29,10 +43,13 @@
         /// <summary>
         /// Total constructor
         /// </summary>
-        /// <param name="total">Total</param>
-        internal CellData(float total)
+        /// <param name="category">Category</param>
+        /// <param name="month">Month</param>
+        internal CellData(string category, DateTime month)
         {
-            Total = total;
+            Category = category;
+            Month = month;
+            Total = 0;
             Transactions = new List<Transaction>();
         }
     }

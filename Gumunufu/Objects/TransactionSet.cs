@@ -54,7 +54,7 @@ namespace Gumunufu.Objects
                 .Where(t => t.Category == category)
                 .Where(t => t.Date.Year == period.Year)
                 .Where(t => t.Date.Month == period.Month).ToList();
-            return new CellData(transactions.Sum(x => x.Amount), transactions);
+            return new CellData(category, period, transactions.Sum(x => x.Amount), transactions);
         }
     }
 }

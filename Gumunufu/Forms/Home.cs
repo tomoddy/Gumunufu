@@ -12,7 +12,7 @@ namespace Gumunufu.Forms
     /// </summary>
     public partial class Home : Form
     {
-        #region Properties and Events
+        #region Properties
 
         /// <summary>
         /// Storage client
@@ -246,6 +246,23 @@ namespace Gumunufu.Forms
         #region Table
 
         /// <summary>
+        /// Table cell click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Get cell data and show dialog if it contains 1 or more transaction
+            CellData cellData = (CellData)HomeTable.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag;
+            if (cellData.Transactions.Count > 0)
+            {
+                TransactionView transactionView = new(cellData.Transactions);
+                transactionView.Text = Resource.Message.CellExpansion(cellData.Category, cellData.Month, cellData.Total);
+                transactionView.ShowDialog();
+            }
+        }
+
+        /// <summary>
         /// Populate table
         /// </summary>
         /// <param name="TransactionSet">Transaction set</param>
@@ -276,7 +293,7 @@ namespace Gumunufu.Forms
             {
                 // Create new row
                 DataGridViewRow newRow = new();
-                float rowTotal = 0;
+                CellData totalCellData = new(Resource.Literal.TOTAL, month);
 
                 // Add date
                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = month.ToString(Resource.Argument.MONTH_YEAR_DATE), Tag = month });
@@ -286,17 +303,18 @@ namespace Gumunufu.Forms
                 {
                     // Create cell and add to row
                     CellData cellData = TransactionSet.GetCellData(month, category);
-                    DataGridViewCell newCell = new DataGridViewTextBoxCell { Value = (int)cellData.Total != 0 ? cellData.Total : string.Empty, Tag = cellData };
+                    DataGridViewCell newCell = new DataGridViewTextBoxCell { Value = cellData.Transactions.Count != 0 ? cellData.Total : string.Empty, Tag = cellData };
                     newRow.Cells.Add(newCell);
 
                     // Add total to row total and month total list
-                    rowTotal += cellData.Total;
+                    totalCellData.Total += cellData.Total;
+                    totalCellData.Transactions.AddRange(cellData.Transactions);
                     cellValues.Add(cellData.Total);
                 }
 
                 // Add total and add row to table
-                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = rowTotal, Tag = new CellData(rowTotal) });
-                cellValues.Add(rowTotal);
+                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = totalCellData.Total, Tag = totalCellData });
+                cellValues.Add(totalCellData.Total);
                 HomeTable.Rows.Add(newRow);
             }
 
