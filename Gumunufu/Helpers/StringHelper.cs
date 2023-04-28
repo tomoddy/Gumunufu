@@ -40,7 +40,13 @@ namespace Gumunufu.Helpers
         /// <returns>True if parsed, false otherwise</returns>
         internal static bool CurrencyParse(string value, out float retVal)
         {
-            return float.TryParse(value.Replace(Resource.Literal.COMMA, string.Empty).Replace(Resource.Literal.POUND, string.Empty).Replace(Resource.Literal.DOT, string.Empty).TrimStart(Resource.Character.ZERO), out retVal);
+            if (value.Equals(Resource.Argument.CURRENCT_DEFAULT))
+            {
+                retVal = 0;
+                return true;
+            }
+            else
+                return float.TryParse(value.Replace(Resource.Literal.COMMA, string.Empty).Replace(Resource.Literal.POUND, string.Empty).Replace(Resource.Literal.DOT, string.Empty).TrimStart(Resource.Character.ZERO), out retVal);
         }
 
         /// <summary>
