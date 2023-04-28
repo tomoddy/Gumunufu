@@ -1,7 +1,11 @@
-# Gumunufu
 
-To Add:
-* Filtering of all transactions
-* Colouring of cells in pop-out windows
-* Ability to query all transactions
-* Support for multiple bank accounts
+# Gumunufu
+## Setup
+
+## Planned Features
+* Advanced queries
+* Pop out for month/category cells
+* Support for multiple bank accounts:
+	* ~~Lloyds~~
+	* ~~Monzo~~
+	* HSBC
