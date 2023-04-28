@@ -3,7 +3,7 @@ using Gumunufu.Globals;
 using Gumunufu.Objects;
 using System.Globalization;
 
-namespace Gumunufu.Helpers.Csv
+namespace Gumunufu.Storage.Csv
 {
     /// <summary>
     /// Data reader
@@ -34,7 +34,7 @@ namespace Gumunufu.Helpers.Csv
             using StreamReader streamReader = new(DatabasePath);
             using CsvReader csvReader = new(streamReader, CultureInfo.CurrentCulture);
             csvReader.Context.TypeConverterOptionsCache.GetOptions<string>().NullValues.Add(string.Empty);
-            csvReader.Context.RegisterClassMap<DataReaderMap>();
+            csvReader.Context.RegisterClassMap<CsvDataReaderMap>();
 
             // Read and return records
             return csvReader.GetRecords<Transaction>().ToList();
@@ -55,7 +55,7 @@ namespace Gumunufu.Helpers.Csv
             using StreamWriter streamWriter = new(tempPath);
             using (CsvWriter csvWriter = new(streamWriter, CultureInfo.CurrentCulture))
             {
-                csvWriter.Context.RegisterClassMap<DataReaderMap>();
+                csvWriter.Context.RegisterClassMap<CsvDataReaderMap>();
                 csvWriter.WriteRecords(transactionSet.Transactions);
             }
 

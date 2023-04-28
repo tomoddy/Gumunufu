@@ -26,8 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\Firebase\" />
-    <Folder Include="Helpers\Csv\" />
+    <Folder Include="Storage\Firebase\" />
   </ItemGroup>
 
 </Project>
