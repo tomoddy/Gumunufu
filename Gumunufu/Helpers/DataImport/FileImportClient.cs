@@ -1,7 +1,7 @@
 ﻿using Gumunufu.Globals;
 using Gumunufu.Objects;
 
-namespace Gumunufu.Helpers.FileImport
+namespace Gumunufu.Helpers.DataImport
 {
     /// <summary>
     /// Importing bank statements

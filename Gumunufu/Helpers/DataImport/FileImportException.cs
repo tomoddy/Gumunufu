@@ -1,4 +1,4 @@
-﻿namespace Gumunufu.Helpers.FileImport
+﻿namespace Gumunufu.Helpers.DataImport
 {
     /// <summary>
     /// String not found exception
