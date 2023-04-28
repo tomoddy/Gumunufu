@@ -5,7 +5,7 @@ namespace Gumunufu.Objects
     /// <summary>
     /// Transaction set
     /// </summary>
-    internal class TransactionSet
+    public class TransactionSet
     {
         /// <summary>
         /// List of transactions

@@ -32,7 +32,7 @@ namespace Gumunufu.Forms
             InitializeComponent();
             Icon = new Icon(Config.Icon);
             Client = new(Config.DatabasePath);
-            TransactionSet = new(Client.GetTransactions());
+            TransactionSet = Client.GetTransactions();
         }
 
         /// <summary>

@@ -6,9 +6,9 @@ using System.Globalization;
 namespace Gumunufu.Storage.Csv
 {
     /// <summary>
-    /// Data reader
+    /// Csv client
     /// </summary>
-    internal class CsvClient
+    public class CsvClient : IStorageClient
     {
         /// <summary>
         /// Path
@@ -28,7 +28,7 @@ namespace Gumunufu.Storage.Csv
         /// Get transactions from database
         /// </summary>
         /// <returns>List of transactions</returns>
-        internal List<Transaction> GetTransactions()
+        public TransactionSet GetTransactions()
         {
             // Create reader
             using StreamReader streamReader = new(DatabasePath);
@@ -37,14 +37,14 @@ namespace Gumunufu.Storage.Csv
             csvReader.Context.RegisterClassMap<CsvDataReaderMap>();
 
             // Read and return records
-            return csvReader.GetRecords<Transaction>().ToList();
+            return new TransactionSet(csvReader.GetRecords<Transaction>().ToList());
         }
 
         /// <summary>
         /// Update database
         /// </summary>
         /// <param name="transactionSet">Transaction set</param>
-        internal void UpdateTransactions(TransactionSet transactionSet)
+        public void UpdateTransactions(TransactionSet transactionSet)
         {
             // Copy database to new temp file
             string extension = Path.GetExtension(DatabasePath);
