@@ -42,6 +42,7 @@
             this.HomeMenuStrupViewTotalByAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalByCategory = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalByName = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripQuery = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).BeginInit();
             this.HomeMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +71,8 @@
             this.HomeMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HomeMenuStripInsert,
             this.HomeMenuStripCategorise,
-            this.HomeMenuStripView});
+            this.HomeMenuStripView,
+            this.HomeMenuStripQuery});
             this.HomeMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.HomeMenuStrip.Name = "HomeMenuStrip";
             this.HomeMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
@@ -171,6 +173,13 @@
             this.HomeMenuStripViewTotalByName.Text = "Name";
             this.HomeMenuStripViewTotalByName.Click += new System.EventHandler(this.HomeMenuStripViewTotalByName_Click);
             // 
+            // HomeMenuStripQuery
+            // 
+            this.HomeMenuStripQuery.Name = "HomeMenuStripQuery";
+            this.HomeMenuStripQuery.Size = new System.Drawing.Size(76, 29);
+            this.HomeMenuStripQuery.Text = "Query";
+            this.HomeMenuStripQuery.Click += new System.EventHandler(this.HomeMenuStripQuery_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -206,5 +215,6 @@
         private ToolStripMenuItem HomeMenuStripViewTotalByName;
         private ToolStripMenuItem HomeMenuStrupViewTotalByAccount;
         private ToolStripMenuItem HomeMenuStrupInsertFromFileMonzo;
+        private ToolStripMenuItem HomeMenuStripQuery;
     }
 }

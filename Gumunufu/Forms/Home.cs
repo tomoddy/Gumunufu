@@ -241,6 +241,31 @@ namespace Gumunufu.Forms
             totalByCategory.ShowDialog();
         }
 
+        /// <summary>
+        /// Open new query window
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripQuery_Click(object sender, EventArgs e)
+        {
+            // Show query selector
+            QuerySelector querySelector = new(
+                TransactionSet.Transactions,
+                TransactionSet.StartDate,
+                TransactionSet.Accounts,
+                TransactionSet.Categories,
+                TransactionSet.MinAmount,
+                TransactionSet.MaxAmount);
+
+            // Show query in transaction view if ok
+            if (querySelector.ShowDialog() == DialogResult.OK)
+            {
+                TransactionView transactionView = new(querySelector.Transactions);
+                transactionView.Text = querySelector.Text;
+                transactionView.ShowDialog();
+            }
+        }
+
         #endregion
 
         #region Table
@@ -287,7 +312,7 @@ namespace Gumunufu.Forms
             HomeTable.Columns[totalIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             // Iterate through months
-            List<DateTime> months = GetRowLabels(Config.StartDate);
+            List<DateTime> months = GetRowLabels(TransactionSet.StartDate);
             List<float> cellValues = new();
             foreach (DateTime month in months)
             {

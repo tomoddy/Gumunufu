@@ -7,6 +7,7 @@ namespace Gumunufu.Globals
     /// </summary>
     public static class Config
     {
+#pragma warning disable IDE0051
         #region Methods
 
         /// <summary>
@@ -88,15 +89,11 @@ namespace Gumunufu.Globals
         public static string DefaultAccount => Get("DefaultAccount");
 
         /// <summary>
-        /// Start date
-        /// </summary>
-        public static DateTime StartDate => Get<DateTime>("StartDate", DateTime.TryParse);
-
-        /// <summary>
         /// Column order
         /// </summary>
         public static List<string> ColumnOrder => Get("ColumnOrder").Split(',').ToList();
 
         #endregion
+#pragma warning restore IDE0051
     }
 }

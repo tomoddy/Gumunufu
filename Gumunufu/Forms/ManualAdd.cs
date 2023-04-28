@@ -1,7 +1,7 @@
 ﻿using Gumunufu.Globals;
+using Gumunufu.Helpers;
 using Gumunufu.Objects;
 using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace Gumunufu.Forms
 {
@@ -49,7 +49,7 @@ namespace Gumunufu.Forms
             NewTransaction.Category = ManualAddCategoryInput.Text;
 
             // Parse float and set value
-            if (float.TryParse(ManualAddAmountInput.Text.Replace(Resource.Literal.COMMA, string.Empty).Replace(Resource.Literal.POUND, string.Empty).Replace(Resource.Literal.DOT, string.Empty).TrimStart(Resource.Character.ZERO), out float value))
+            if (StringHelper.CurrencyParse(ManualAddAmountInput.Text, out float value))
             {
                 // Invert value if negative
                 if (ManualAddNegativeCheckBox.Checked)
@@ -70,7 +70,7 @@ namespace Gumunufu.Forms
         private void ManualAddAmountInput_TextChanged(object sender, EventArgs e)
         {
             // Remove previous formatting and parse to float
-            if (float.TryParse(ManualAddAmountInput.Text.Replace(Resource.Literal.COMMA, string.Empty).Replace(Resource.Literal.POUND, string.Empty).Replace(Resource.Literal.DOT, string.Empty).TrimStart(Resource.Character.ZERO), out float value))
+            if (StringHelper.CurrencyParse(ManualAddAmountInput.Text, out float value))
             {
                 // Format the text as currency
                 value /= 100;
@@ -81,7 +81,7 @@ namespace Gumunufu.Forms
             }
 
             // Check if format is valid
-            bool validFormat = FormatIsValid(ManualAddAmountInput.Text);
+            bool validFormat = StringHelper.FormatIsValid(ManualAddAmountInput.Text);
             ManualAddSubmit.Enabled = validFormat;
 
             // Reset text if not valid
@@ -90,17 +90,6 @@ namespace Gumunufu.Forms
                 ManualAddAmountInput.Text = Resource.Argument.CURRENCT_DEFAULT;
                 ManualAddAmountInput.Select(ManualAddAmountInput.Text.Length, 0);
             }
-        }
-
-        /// <summary>
-        /// Checks regex of currency format
-        /// </summary>
-        /// <param name="text">Input text</param>
-        /// <returns>True if valid, false otherwise</returns>
-        private static bool FormatIsValid(string text)
-        {
-            Regex money = new(Resource.Argument.CURRENCY_REGEX);
-            return money.IsMatch(text);
         }
     }
 }
