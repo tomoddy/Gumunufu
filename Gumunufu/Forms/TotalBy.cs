@@ -30,7 +30,7 @@ namespace Gumunufu.Forms
             Icon = new Icon(Config.Icon);
             Text += argument;
             Argument = argument;
-            Transactions = transactions;
+            Transactions = new List<Transaction>(transactions);
         }
 
         /// <summary>

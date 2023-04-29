@@ -37,7 +37,7 @@
             Category = category;
             Month = month;
             Total = total;
-            Transactions = transactions;
+            Transactions = new List<Transaction>(transactions);
         }
 
         /// <summary>
