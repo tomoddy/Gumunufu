@@ -8,6 +8,12 @@ namespace Gumunufu.Storage
     internal interface IStorageClient
     {
         /// <summary>
+        /// Check if user is valid
+        /// </summary>
+        /// <returns>True if valid, false otherwise</returns>
+        internal abstract bool CheckCredentials();
+
+        /// <summary>
         /// Get transactions from database
         /// </summary>
         /// <returns>List of transactions</returns>

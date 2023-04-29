@@ -25,6 +25,16 @@ namespace Gumunufu.Storage.Csv
         }
 
         /// <summary>
+        /// Check if user is valid
+        /// </summary>
+        /// <returns>True if valid, false otherwise</returns>
+        public bool CheckCredentials()
+        {
+            // Always true for csv database
+            return true;
+        }
+
+        /// <summary>
         /// Get transactions from database
         /// </summary>
         /// <returns>List of transactions</returns>

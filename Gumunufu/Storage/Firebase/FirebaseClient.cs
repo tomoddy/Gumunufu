@@ -33,6 +33,22 @@ namespace Gumunufu.Storage.Firebase
         }
 
         /// <summary>
+        /// Check if user is valid
+        /// </summary>
+        /// <returns>True if valid, false otherwise</returns>
+        public bool CheckCredentials()
+        {
+            // Get all accounts
+            List<Credential> accounts = new();
+            QuerySnapshot accountsSnapshot = Database.Collection(Resource.Firebase.ACCOUNTS).GetSnapshotAsync().GetAwaiter().GetResult();
+            foreach (DocumentSnapshot document in accountsSnapshot.Documents)
+                accounts.Add(new Credential(document.ToDictionary()));
+
+            // Return true if user is valid
+            return accounts.Where(x => x.Username == Config.FirebaseUsername).Where(x => x.Password == Config.FirebasePassword).Any();
+        }
+
+        /// <summary>
         /// Get transactions from database
         /// </summary>
         /// <returns>List of transactions</returns>

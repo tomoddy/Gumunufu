@@ -29,9 +29,16 @@ namespace Gumunufu.Forms
         /// </summary>
         public Home()
         {
+            // Initialize component and create client
             InitializeComponent();
             Icon = new Icon(Config.Icon);
             Client = new StorageClient().CreateClient(Enum.Parse<StorageType>(Config.StorageType));
+
+            // Check credentials
+            if (!Client.CheckCredentials())
+                throw new UnauthorizedAccessException("Login failed");
+
+            // Get transactions
             TransactionSet = Client.GetTransactions();
         }
 

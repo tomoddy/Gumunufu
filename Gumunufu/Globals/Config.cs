@@ -79,6 +79,11 @@ namespace Gumunufu.Globals
         public static string FirebaseUsername => Get("FirebaseUsername");
 
         /// <summary>
+        /// Firebase password
+        /// </summary>
+        public static string FirebasePassword => Get("FirebasePassword");
+
+        /// <summary>
         /// Browser path
         /// </summary>
         public static string BrowserPath => Get("BrowserPath");
