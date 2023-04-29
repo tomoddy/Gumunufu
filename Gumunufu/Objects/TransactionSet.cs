@@ -99,7 +99,7 @@ namespace Gumunufu.Objects
         internal TransactionSet(List<Transaction> transactions)
         {
             // Set transactions, get accounts and categories
-            Transactions = new List<Transaction>();
+            Transactions = transactions;
             Accounts = Transactions.Where(t => t.Account is not null).Select(t => t.Account).Distinct().Cast<string>().ToList();
             Categories = CategorisedTransactions.Where(t => t.Category is not null).OrderBy(t => t.Category).Select(t => t.Category).Distinct().Cast<string>().ToList();
 

@@ -190,6 +190,7 @@
             this.MainMenuStrip = this.HomeMenuStrip;
             this.Name = "Home";
             this.Text = "Gumunufu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).EndInit();
             this.HomeMenuStrip.ResumeLayout(false);

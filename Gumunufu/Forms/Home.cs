@@ -12,7 +12,7 @@ namespace Gumunufu.Forms
     /// </summary>
     public partial class Home : Form
     {
-        #region Properties
+        #region Properties and Events
 
         /// <summary>
         /// Storage client
@@ -56,6 +56,22 @@ namespace Gumunufu.Forms
             SetControls(true);
         }
 
+        /// <summary>
+        /// On close event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Save transactions
+            Enabled = false;
+            Client.UpdateTransactions(TransactionSet);
+        }
+
+        /// <summary>
+        /// Set controls
+        /// </summary>
+        /// <param name="state">State</param>
         private void SetControls(bool state)
         {
             HomeTable.Enabled = state;
