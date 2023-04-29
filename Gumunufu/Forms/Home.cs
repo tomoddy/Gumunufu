@@ -3,6 +3,7 @@ using Gumunufu.Helpers;
 using Gumunufu.Helpers.DataImport;
 using Gumunufu.Objects;
 using Gumunufu.Storage;
+using Gumunufu.Storage.Csv;
 using System.Globalization;
 
 namespace Gumunufu.Forms
@@ -13,6 +14,11 @@ namespace Gumunufu.Forms
     public partial class Home : Form
     {
         #region Properties and Events
+
+        /// <summary>
+        /// Storage type
+        /// </summary>
+        private StorageType StorageType { get; set; }
 
         /// <summary>
         /// Storage client
@@ -32,7 +38,8 @@ namespace Gumunufu.Forms
             // Initialize component and create client
             InitializeComponent();
             Icon = new Icon(Config.Icon);
-            Client = new StorageClient().CreateClient(Enum.Parse<StorageType>(Config.StorageType));
+            StorageType = Enum.Parse<StorageType>(Config.StorageType);
+            Client = new StorageClient().CreateClient(StorageType);
 
             // Check credentials
             if (!Client.CheckCredentials())
@@ -95,7 +102,11 @@ namespace Gumunufu.Forms
         /// <param name="uncategorisedCount">Number of uncategorised transactions</param>
         private void PopulateMenuStrip()
         {
+            // Set categorise label
             SetCategoriseLabel(TransactionSet.UncategoriedTransactions.Count);
+
+            // Enable export
+            HomeMenuStripExport.Enabled = HomeMenuStripExport.Visible = StorageType != StorageType.Csv;
         }
 
         /// <summary>
@@ -316,6 +327,24 @@ namespace Gumunufu.Forms
                 }
                 else
                     MessageBox.Show(Resource.Message.NOT_FOUND_TEXT, Resource.Message.NOT_FOUND, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        /// <summary>
+        /// Export database to csv
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void HomeMenuStripExport_Click(object sender, EventArgs e)
+        {
+            // Create save dialog
+            SaveFileDialog saveFileDialog = new() { Filter = Resource.Argument.CSV_FILTER };
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Create file and save to csv
+                File.Create(saveFileDialog.FileName).Close();
+                CsvClient client = new(saveFileDialog.FileName);
+                client.UpdateTransactions(TransactionSet);
             }
         }
 

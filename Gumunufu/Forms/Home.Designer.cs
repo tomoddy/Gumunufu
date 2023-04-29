@@ -43,6 +43,7 @@
             this.HomeMenuStripViewTotalByCategory = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalByName = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripQuery = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripExport = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HomeTable)).BeginInit();
             this.HomeMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +74,8 @@
             this.HomeMenuStripInsert,
             this.HomeMenuStripCategorise,
             this.HomeMenuStripView,
-            this.HomeMenuStripQuery});
+            this.HomeMenuStripQuery,
+            this.HomeMenuStripExport});
             this.HomeMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.HomeMenuStrip.Name = "HomeMenuStrip";
             this.HomeMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
@@ -96,7 +98,7 @@
             this.HomeMenuStripInsertFromFileLloyds,
             this.HomeMenuStrupInsertFromFileMonzo});
             this.HomeMenuStripInsertFromFile.Name = "HomeMenuStripInsertFromFile";
-            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(187, 34);
             this.HomeMenuStripInsertFromFile.Text = "From File";
             // 
             // HomeMenuStripInsertFromFileLloyds
@@ -116,7 +118,7 @@
             // HomeMenuStripInsertManual
             // 
             this.HomeMenuStripInsertManual.Name = "HomeMenuStripInsertManual";
-            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(187, 34);
             this.HomeMenuStripInsertManual.Text = "Manual";
             this.HomeMenuStripInsertManual.Click += new System.EventHandler(this.HomeMenuStripInsertManual_Click);
             // 
@@ -181,6 +183,15 @@
             this.HomeMenuStripQuery.Text = "Query";
             this.HomeMenuStripQuery.Click += new System.EventHandler(this.HomeMenuStripQuery_Click);
             // 
+            // HomeMenuStripExport
+            // 
+            this.HomeMenuStripExport.Enabled = false;
+            this.HomeMenuStripExport.Name = "HomeMenuStripExport";
+            this.HomeMenuStripExport.Size = new System.Drawing.Size(79, 29);
+            this.HomeMenuStripExport.Text = "Export";
+            this.HomeMenuStripExport.Visible = false;
+            this.HomeMenuStripExport.Click += new System.EventHandler(this.HomeMenuStripExport_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -218,5 +229,6 @@
         private ToolStripMenuItem HomeMenuStrupViewTotalByAccount;
         private ToolStripMenuItem HomeMenuStrupInsertFromFileMonzo;
         private ToolStripMenuItem HomeMenuStripQuery;
+        private ToolStripMenuItem HomeMenuStripExport;
     }
 }
