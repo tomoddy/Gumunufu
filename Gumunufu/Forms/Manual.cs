@@ -27,7 +27,7 @@ namespace Gumunufu.Forms
             Transaction = new Transaction
             {
                 Date = DateTime.Now,
-                Account = Resource.Literal.GUNUFUFU,
+                Account = Config.DefaultAccount,
                 Category = string.Empty,
                 Name = Resource.Literal.GUNUFUFU,
                 Amount = 0
