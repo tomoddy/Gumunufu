@@ -178,10 +178,10 @@ namespace Gumunufu.Forms
         /// <param name="e">Event arguments</param>
         private void HomeMenuStripInsertManual_Click(object sender, EventArgs e)
         {
-            ManualAdd manualAdd = new();
+            Manual manualAdd = new();
             if (manualAdd.ShowDialog() == DialogResult.OK)
             {
-                TransactionSet.Transactions.Add(manualAdd.NewTransaction);
+                TransactionSet.Transactions.Add(manualAdd.Transaction);
                 Client.UpdateTransactions(TransactionSet);
                 Home_Load(sender, e);
             }
@@ -227,6 +227,24 @@ namespace Gumunufu.Forms
         {
             TransactionView transactionView = new(TransactionSet.Transactions);
             transactionView.ShowDialog();
+            UpdateTransactions(sender, e, transactionView.Updates);
+        }
+
+        /// <summary>
+        /// Update transactions
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        /// <param name="updates">Transaction updates</param>
+        private void UpdateTransactions(object sender, EventArgs e, TransactionUpdate updates)
+        {
+            foreach (Transaction remove in updates.Delete)
+                TransactionSet.Transactions.Remove(remove);
+
+            foreach (Transaction add in updates.Edit)
+                TransactionSet.Transactions.Add(add);
+
+            Home_Load(sender, e);
         }
 
         /// <summary>
@@ -287,6 +305,7 @@ namespace Gumunufu.Forms
                     TransactionView transactionView = new(querySelector.Transactions);
                     transactionView.Text = querySelector.Text;
                     transactionView.ShowDialog();
+                    UpdateTransactions(sender, e, transactionView.Updates);
                 }
                 else
                     MessageBox.Show(Resource.Message.NOT_FOUND_TEXT, Resource.Message.NOT_FOUND, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -311,6 +330,7 @@ namespace Gumunufu.Forms
                 TransactionView transactionView = new(cellData.Transactions);
                 transactionView.Text = Resource.Message.CellExpansion(cellData.Category, cellData.Month, cellData.Total);
                 transactionView.ShowDialog();
+                UpdateTransactions(sender, e, transactionView.Updates);
             }
         }
 

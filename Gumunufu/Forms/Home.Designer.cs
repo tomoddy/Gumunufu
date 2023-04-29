@@ -59,6 +59,7 @@
             this.HomeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HomeTable.Location = new System.Drawing.Point(16, 43);
             this.HomeTable.Name = "HomeTable";
+            this.HomeTable.ReadOnly = true;
             this.HomeTable.RowHeadersWidth = 62;
             this.HomeTable.RowTemplate.Height = 33;
             this.HomeTable.Size = new System.Drawing.Size(893, 1165);
@@ -95,7 +96,7 @@
             this.HomeMenuStripInsertFromFileLloyds,
             this.HomeMenuStrupInsertFromFileMonzo});
             this.HomeMenuStripInsertFromFile.Name = "HomeMenuStripInsertFromFile";
-            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(187, 34);
+            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripInsertFromFile.Text = "From File";
             // 
             // HomeMenuStripInsertFromFileLloyds
@@ -115,7 +116,7 @@
             // HomeMenuStripInsertManual
             // 
             this.HomeMenuStripInsertManual.Name = "HomeMenuStripInsertManual";
-            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(187, 34);
+            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripInsertManual.Text = "Manual";
             this.HomeMenuStripInsertManual.Click += new System.EventHandler(this.HomeMenuStripInsertManual_Click);
             // 

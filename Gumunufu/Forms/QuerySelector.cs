@@ -52,7 +52,7 @@ namespace Gumunufu.Forms
         public QuerySelector(List<Transaction> transactions, DateTime startDate, List<string> accounts, List<string> categories, float minAmount, float maxAmount)
         {
             InitializeComponent();
-            Transactions = transactions;
+            Transactions = new List<Transaction>(transactions);
             StartDate = startDate;
             Accounts = accounts;
             Categories = categories;
@@ -188,7 +188,7 @@ namespace Gumunufu.Forms
             // Reset text if not valid
             if (!validFormat)
             {
-                QuerySelectorMinInput.Text = Resource.Argument.CURRENCT_DEFAULT;
+                QuerySelectorMinInput.Text = Resource.Argument.CURRENCY_DEFAULT;
                 QuerySelectorMinInput.Select(QuerySelectorMinInput.Text.Length, 0);
             }
         }
@@ -218,7 +218,7 @@ namespace Gumunufu.Forms
             // Reset text if not valid
             if (!validFormat)
             {
-                QuerySelectorMaxInput.Text = Resource.Argument.CURRENCT_DEFAULT;
+                QuerySelectorMaxInput.Text = Resource.Argument.CURRENCY_DEFAULT;
                 QuerySelectorMaxInput.Select(QuerySelectorMaxInput.Text.Length, 0);
             }
         }

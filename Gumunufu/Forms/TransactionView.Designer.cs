@@ -44,10 +44,12 @@
             this.TransactionViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransactionViewTable.Location = new System.Drawing.Point(12, 12);
             this.TransactionViewTable.Name = "TransactionViewTable";
+            this.TransactionViewTable.ReadOnly = true;
             this.TransactionViewTable.RowHeadersWidth = 62;
             this.TransactionViewTable.RowTemplate.Height = 33;
             this.TransactionViewTable.Size = new System.Drawing.Size(776, 1273);
             this.TransactionViewTable.TabIndex = 0;
+            this.TransactionViewTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionViewTable_CellDoubleClick);
             // 
             // TransactionView
             // 
