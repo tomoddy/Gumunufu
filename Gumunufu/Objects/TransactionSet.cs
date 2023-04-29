@@ -15,12 +15,30 @@ namespace Gumunufu.Objects
         /// <summary>
         /// List of categorised transactions
         /// </summary>
-        internal List<Transaction> CategorisedTransactions => Transactions.Where(t => t.Category != null).OrderBy(t => t.Date).ToList();
+        internal List<Transaction> CategorisedTransactions
+        {
+            get
+            {
+                if (Transactions.Any())
+                    return Transactions.Where(t => t.Category != null).OrderBy(t => t.Date).ToList();
+                else
+                    return new List<Transaction>();
+            }
+        }
 
         /// <summary>
         /// Uncategories transactions
         /// </summary>
-        internal List<Transaction> UncategoriedTransactions => Transactions.Where(t => t.Category is null).ToList();
+        internal List<Transaction> UncategoriedTransactions
+        {
+            get
+            {
+                if (Transactions.Any())
+                    return Transactions.Where(t => t.Category is null).ToList();
+                else
+                    return new List<Transaction>();
+            }
+        }
 
         /// <summary>
         /// List of accounts
@@ -35,17 +53,44 @@ namespace Gumunufu.Objects
         /// <summary>
         /// Start date
         /// </summary>
-        internal DateTime StartDate => Transactions.OrderBy(t => t.Date).Select(t => t.Date).First();
+        internal DateTime StartDate
+{
+            get
+            {
+                if (Transactions.Any())
+                    return Transactions.OrderBy(t => t.Date).Select(t => t.Date).First();
+                else
+                    return DateTime.Now;
+            }
+        }
 
         /// <summary>
         /// Minimum amount
         /// </summary>
-        internal float MinAmount => Transactions.OrderBy(t => t.Amount).Select(t => t.Amount).First();
+        internal float MinAmount
+{
+            get
+            {
+                if (Transactions.Any())
+                    return Transactions.OrderBy(t => t.Amount).Select(t => t.Amount).First();
+                else
+                    return default;
+            }
+        }
 
         /// <summary>
         /// Maximum amount
         /// </summary>
-        internal float MaxAmount => Transactions.OrderByDescending(t => t.Amount).Select(t => t.Amount).First();
+        internal float MaxAmount
+{
+            get
+            {
+                if (Transactions.Any())
+                    return Transactions.OrderByDescending(t => t.Amount).Select(t => t.Amount).First();
+                else
+                    return default;
+            }
+        }
 
         /// <summary>
         /// Default constructor
@@ -54,7 +99,7 @@ namespace Gumunufu.Objects
         internal TransactionSet(List<Transaction> transactions)
         {
             // Set transactions, get accounts and categories
-            Transactions = transactions;
+            Transactions = new List<Transaction>();
             Accounts = Transactions.Where(t => t.Account is not null).Select(t => t.Account).Distinct().Cast<string>().ToList();
             Categories = CategorisedTransactions.Where(t => t.Category is not null).OrderBy(t => t.Category).Select(t => t.Category).Distinct().Cast<string>().ToList();
 
