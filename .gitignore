@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Gumunufu/Database.csv
 /Gumunufu/App.config
+/Gumunufu/GumufunuFiresbaseKey.json
