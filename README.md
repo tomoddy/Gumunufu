@@ -13,5 +13,5 @@ Initial Release
 * ~~Ability to edit/delete transactions from the transaction view~~
 * Support for Lloyds credit card statements
 * Firebase improvements
-  * Add login support for central installation
+  * ~~Add login support for central installation~~
   * Add ability to export to CSV
