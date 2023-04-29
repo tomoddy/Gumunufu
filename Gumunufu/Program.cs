@@ -18,7 +18,7 @@ namespace Gumunufu
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Resource.Message.UNKNOWN_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resource.Message.ExceptionMessage(ex), Resource.Message.UNKNOWN_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

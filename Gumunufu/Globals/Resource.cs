@@ -158,6 +158,16 @@
             /// Edit transaction
             /// </summary>
             public const string EDIT_TRANSACTION = "Edit Transaction";
+
+            /// <summary>
+            /// Exception message for message box
+            /// </summary>
+            /// <param name="ex">Exception</param>
+            /// <returns>Text</returns>
+            public static string ExceptionMessage(Exception ex)
+            {
+                return $"{ex.GetType()} : {ex.Message}";
+            }
         }
 
         /// <summary>
@@ -240,6 +250,21 @@
             /// Users
             /// </summary>
             public const string USERS = "Users";
+
+            /// <summary>
+            /// Accounts
+            /// </summary>
+            public const string ACCOUNTS = "Accounts";
+
+            /// <summary>
+            /// Username
+            /// </summary>
+            public const string USERNAME = "Username";
+
+            /// <summary>
+            /// Password
+            /// </summary>
+            public const string PASSWORD = "Password";
 
             /// <summary>
             /// TransactionSets
