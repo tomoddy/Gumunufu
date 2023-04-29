@@ -85,6 +85,16 @@ namespace Gumunufu.Forms
         }
 
         /// <summary>
+        /// Delete click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void CategoriseDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Ignore;
+        }
+
+        /// <summary>
         /// Submit click event
         /// </summary>
         /// <param name="sender">Sender</param>

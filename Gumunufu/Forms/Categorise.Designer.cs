@@ -40,6 +40,7 @@
             this.CategoriseNameLabel = new System.Windows.Forms.LinkLabel();
             this.CategoriseAccountTagLabel = new System.Windows.Forms.Label();
             this.CategoriseAccountLabel = new System.Windows.Forms.Label();
+            this.CategoriseDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CategoriseDateLabel
@@ -103,16 +104,16 @@
             this.CategoriseListView.MultiSelect = false;
             this.CategoriseListView.Name = "CategoriseListView";
             this.CategoriseListView.Size = new System.Drawing.Size(406, 194);
-            this.CategoriseListView.TabIndex = 7;
+            this.CategoriseListView.TabIndex = 1;
             this.CategoriseListView.UseCompatibleStateImageBehavior = false;
             this.CategoriseListView.View = System.Windows.Forms.View.SmallIcon;
             // 
             // CategoriseSubmit
             // 
-            this.CategoriseSubmit.Location = new System.Drawing.Point(307, 353);
+            this.CategoriseSubmit.Location = new System.Drawing.Point(307, 390);
             this.CategoriseSubmit.Name = "CategoriseSubmit";
             this.CategoriseSubmit.Size = new System.Drawing.Size(111, 33);
-            this.CategoriseSubmit.TabIndex = 8;
+            this.CategoriseSubmit.TabIndex = 4;
             this.CategoriseSubmit.Text = "Submit";
             this.CategoriseSubmit.UseVisualStyleBackColor = true;
             this.CategoriseSubmit.Click += new System.EventHandler(this.CategoriseSubmit_Click);
@@ -122,8 +123,8 @@
             this.CategoriseInput.Enabled = false;
             this.CategoriseInput.Location = new System.Drawing.Point(12, 353);
             this.CategoriseInput.Name = "CategoriseInput";
-            this.CategoriseInput.Size = new System.Drawing.Size(289, 31);
-            this.CategoriseInput.TabIndex = 9;
+            this.CategoriseInput.Size = new System.Drawing.Size(406, 31);
+            this.CategoriseInput.TabIndex = 2;
             // 
             // CategoriseNewCheckBox
             // 
@@ -131,7 +132,7 @@
             this.CategoriseNewCheckBox.Location = new System.Drawing.Point(17, 118);
             this.CategoriseNewCheckBox.Name = "CategoriseNewCheckBox";
             this.CategoriseNewCheckBox.Size = new System.Drawing.Size(155, 29);
-            this.CategoriseNewCheckBox.TabIndex = 10;
+            this.CategoriseNewCheckBox.TabIndex = 0;
             this.CategoriseNewCheckBox.Text = "New category?";
             this.CategoriseNewCheckBox.UseVisualStyleBackColor = true;
             this.CategoriseNewCheckBox.CheckedChanged += new System.EventHandler(this.CategoriseNewCheckBox_CheckedChanged);
@@ -171,11 +172,22 @@
             this.CategoriseAccountLabel.Text = "account";
             this.CategoriseAccountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // CategoriseDelete
+            // 
+            this.CategoriseDelete.Location = new System.Drawing.Point(12, 390);
+            this.CategoriseDelete.Name = "CategoriseDelete";
+            this.CategoriseDelete.Size = new System.Drawing.Size(111, 33);
+            this.CategoriseDelete.TabIndex = 3;
+            this.CategoriseDelete.Text = "Delete";
+            this.CategoriseDelete.UseVisualStyleBackColor = true;
+            this.CategoriseDelete.Click += new System.EventHandler(this.CategoriseDelete_Click);
+            // 
             // Categorise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 397);
+            this.ClientSize = new System.Drawing.Size(430, 436);
+            this.Controls.Add(this.CategoriseDelete);
             this.Controls.Add(this.CategoriseAccountTagLabel);
             this.Controls.Add(this.CategoriseAccountLabel);
             this.Controls.Add(this.CategoriseNameLabel);
@@ -214,5 +226,6 @@
         private LinkLabel CategoriseNameLabel;
         private Label CategoriseAccountTagLabel;
         private Label CategoriseAccountLabel;
+        private Button CategoriseDelete;
     }
 }

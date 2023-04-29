@@ -201,8 +201,13 @@ namespace Gumunufu.Forms
                 Transaction uncategorisedTransaction = TransactionSet.UncategoriedTransactions.First();
                 Categorise categoriseForm = new(Location, TransactionSet.Categories, ref uncategorisedTransaction);
 
-                // Move transaction into main list if submitted
-                if (categoriseForm.ShowDialog() != DialogResult.OK)
+                // Perform actions based on dialog result
+                DialogResult categoriseResult = categoriseForm.ShowDialog();
+                if (categoriseResult == DialogResult.OK)
+                    continue;
+                else if (categoriseResult == DialogResult.Ignore)
+                    TransactionSet.Transactions.Remove(uncategorisedTransaction);
+                else
                     break;
             }
 
@@ -316,7 +321,8 @@ namespace Gumunufu.Forms
         private void PopulateTable()
         {
             // Add month header
-            HomeTable.Columns.Add(Resource.Literal.MONTH, Resource.Literal.MONTH);
+            int monthIndex = HomeTable.Columns.Add(Resource.Literal.MONTH, Resource.Literal.MONTH);
+            HomeTable.Columns[monthIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             // Add category headers
             foreach (string? category in TransactionSet.Categories)
@@ -325,6 +331,7 @@ namespace Gumunufu.Forms
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.Format = Resource.Argument.CURRENCY_FORMAT;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
                 HomeTable.Columns[categoryIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                HomeTable.Columns[categoryIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
             // Add total header
@@ -332,6 +339,7 @@ namespace Gumunufu.Forms
             HomeTable.Columns[totalIndex].DefaultCellStyle.Format = Resource.Argument.CURRENCY_FORMAT;
             HomeTable.Columns[totalIndex].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             HomeTable.Columns[totalIndex].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            HomeTable.Columns[totalIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             // Iterate through months
             List<DateTime> months = GetRowLabels(TransactionSet.StartDate);
