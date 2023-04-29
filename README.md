@@ -2,11 +2,10 @@
 # Gumunufu
 ## Setup
 
-## Planned Features
-* ~~Advanced queries~~
-* ~~Pop out for month/category cells~~
-* Support for multiple bank accounts:
-	* ~~Lloyds~~
-	* ~~Monzo~~
-	* HSBC
-* Edit/delete transactions
+## Release Notes
+# v1.0
+Initial Release
+
+# v1.1 (In Development)
+* ~~Ability to edit/delete transactions from the transaction view~~
+* Support for Lloyds credit card statements
