@@ -44,6 +44,7 @@
             this.TotalByTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TotalByTable.Location = new System.Drawing.Point(12, 12);
             this.TotalByTable.Name = "TotalByTable";
+            this.TotalByTable.ReadOnly = true;
             this.TotalByTable.RowHeadersWidth = 62;
             this.TotalByTable.RowTemplate.Height = 33;
             this.TotalByTable.Size = new System.Drawing.Size(741, 1054);
