@@ -98,14 +98,9 @@ namespace Gumunufu.Objects
         /// <param name="transactions">List of transaction</param>
         internal TransactionSet(List<Transaction> transactions)
         {
-            // Set transactions, get accounts and categories
             Transactions = new List<Transaction>(transactions);
             Accounts = Transactions.Where(t => t.Account is not null).Select(t => t.Account).Distinct().Cast<string>().ToList();
             Categories = CategorisedTransactions.Where(t => t.Category is not null).OrderBy(t => t.Category).Select(t => t.Category).Distinct().Cast<string>().ToList();
-
-            // Check if config option overrides column selection
-            if (Categories.All(Config.ColumnOrder.Contains))
-                Categories = Config.ColumnOrder;
         }
 
         /// <summary>

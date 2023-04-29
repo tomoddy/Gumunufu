@@ -88,11 +88,6 @@ namespace Gumunufu.Globals
         /// </summary>
         public static string DefaultAccount => Get("DefaultAccount");
 
-        /// <summary>
-        /// Column order
-        /// </summary>
-        public static List<string> ColumnOrder => Get("ColumnOrder").Split(',').ToList();
-
         #endregion
 #pragma warning restore IDE0051
     }
