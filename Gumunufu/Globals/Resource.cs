@@ -11,6 +11,11 @@
         public static class Literal
         {
             /// <summary>
+            /// Project name
+            /// </summary>
+            public const string GUNUFUFU = "GUMUFUNU";
+
+            /// <summary>
             /// Date
             /// </summary>
             public const string DATE = "Date";
@@ -143,6 +148,16 @@
             /// Query not found text
             /// </summary>
             public const string NOT_FOUND_TEXT = "Query returned no results.";
+
+            /// <summary>
+            /// Add transaction
+            /// </summary>
+            public const string ADD_TRANSACTION = "Add Transaction";
+
+            /// <summary>
+            /// Edit transaction
+            /// </summary>
+            public const string EDIT_TRANSACTION = "Edit Transaction";
         }
 
         /// <summary>
@@ -188,7 +203,7 @@
             /// <summary>
             /// Currency default
             /// </summary>
-            public const string CURRENCT_DEFAULT = "£0.00";
+            public const string CURRENCY_DEFAULT = "£0.00";
 
             /// <summary>
             /// Currency cell format

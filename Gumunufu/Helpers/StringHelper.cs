@@ -40,7 +40,7 @@ namespace Gumunufu.Helpers
         /// <returns>True if parsed, false otherwise</returns>
         internal static bool CurrencyParse(string value, out float retVal)
         {
-            if (value.Equals(Resource.Argument.CURRENCT_DEFAULT))
+            if (value.Equals(Resource.Argument.CURRENCY_DEFAULT))
             {
                 retVal = 0;
                 return true;
