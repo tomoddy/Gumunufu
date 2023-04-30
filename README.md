@@ -12,8 +12,8 @@ Initial Release
 #### Added
 * ~~Ability to edit/delete transactions from the transaction view~~
 * New bank support
- * Lloyds credit card statements
- * Natwest bank statements
+  * Lloyds credit card statements
+  * Natwest bank statements
 * ~~Firebase improvements~~
   * ~~Add login support for central installation~~
   * ~~Add ability to export to CSV~~
