@@ -11,7 +11,9 @@ Initial Release
 * Column order config option
 #### Added
 * ~~Ability to edit/delete transactions from the transaction view~~
-* Support for Lloyds credit card statements
+* New bank support
+ * Lloyds credit card statements
+ * Natwest bank statements
 * ~~Firebase improvements~~
   * ~~Add login support for central installation~~
   * ~~Add ability to export to CSV~~
