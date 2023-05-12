@@ -163,7 +163,7 @@ namespace Gumunufu.Forms
         /// </summary>
         /// <param name="sender">Sender</param>
         /// <param name="e">Event arguments</param>
-        private void HomeMenuStrupInsertFromFileMonzo_Click(object sender, EventArgs e)
+        private void HomeMenuStripInsertFromFileMonzo_Click(object sender, EventArgs e)
         {
             // Create and show open file dialog
             OpenFileDialog fileDialog = new() { Filter = Resource.Argument.CSV_FILTER };
@@ -270,7 +270,7 @@ namespace Gumunufu.Forms
         /// </summary>
         /// <param name="sender">Sender</param>
         /// <param name="e">Event arguments</param>
-        private void HomeMenuStrupViewTotalByAccount_Click(object sender, EventArgs e)
+        private void HomeMenuStripViewTotalByAccount_Click(object sender, EventArgs e)
         {
             TotalBy totalByCategory = new(Resource.Literal.ACCOUNT, TransactionSet.Transactions);
             totalByCategory.ShowDialog();

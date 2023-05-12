@@ -33,13 +33,14 @@
             this.HomeMenuStripInsert = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFile = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFileLloyds = new System.Windows.Forms.ToolStripMenuItem();
-            this.HomeMenuStrupInsertFromFileMonzo = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripInsertFromFileMonzo = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripInsertFromFileLloydsCredit = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertManual = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripCategorise = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripView = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewAll = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalBy = new System.Windows.Forms.ToolStripMenuItem();
-            this.HomeMenuStrupViewTotalByAccount = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripViewTotalByAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalByCategory = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripViewTotalByName = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripQuery = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +97,8 @@
             // 
             this.HomeMenuStripInsertFromFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HomeMenuStripInsertFromFileLloyds,
-            this.HomeMenuStrupInsertFromFileMonzo});
+            this.HomeMenuStripInsertFromFileLloydsCredit,
+            this.HomeMenuStripInsertFromFileMonzo});
             this.HomeMenuStripInsertFromFile.Name = "HomeMenuStripInsertFromFile";
             this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(187, 34);
             this.HomeMenuStripInsertFromFile.Text = "From File";
@@ -108,12 +110,18 @@
             this.HomeMenuStripInsertFromFileLloyds.Text = "Lloyds";
             this.HomeMenuStripInsertFromFileLloyds.Click += new System.EventHandler(this.HomeMenuStripInsertFromFileLloyds_Click);
             // 
-            // HomeMenuStrupInsertFromFileMonzo
+            // HomeMenuStripInsertFromFileMonzo
             // 
-            this.HomeMenuStrupInsertFromFileMonzo.Name = "HomeMenuStrupInsertFromFileMonzo";
-            this.HomeMenuStrupInsertFromFileMonzo.Size = new System.Drawing.Size(170, 34);
-            this.HomeMenuStrupInsertFromFileMonzo.Text = "Monzo";
-            this.HomeMenuStrupInsertFromFileMonzo.Click += new System.EventHandler(this.HomeMenuStrupInsertFromFileMonzo_Click);
+            this.HomeMenuStripInsertFromFileMonzo.Name = "HomeMenuStripInsertFromFileMonzo";
+            this.HomeMenuStripInsertFromFileMonzo.Size = new System.Drawing.Size(170, 34);
+            this.HomeMenuStripInsertFromFileMonzo.Text = "Monzo";
+            this.HomeMenuStripInsertFromFileMonzo.Click += new System.EventHandler(this.HomeMenuStripInsertFromFileMonzo_Click);
+            // 
+            // HomeMenuStripInsertFromFileLloydsCredit
+            // 
+            this.HomeMenuStripInsertFromFileLloydsCredit.Name = "HomeMenuStripInsertFromFileLloydsCredit";
+            this.HomeMenuStripInsertFromFileLloydsCredit.Size = new System.Drawing.Size(217, 34);
+            this.HomeMenuStripInsertFromFileLloydsCredit.Text = "Lloyds Credit";
             // 
             // HomeMenuStripInsertManual
             // 
@@ -148,19 +156,19 @@
             // HomeMenuStripViewTotalBy
             // 
             this.HomeMenuStripViewTotalBy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.HomeMenuStrupViewTotalByAccount,
+            this.HomeMenuStripViewTotalByAccount,
             this.HomeMenuStripViewTotalByCategory,
             this.HomeMenuStripViewTotalByName});
             this.HomeMenuStripViewTotalBy.Name = "HomeMenuStripViewTotalBy";
             this.HomeMenuStripViewTotalBy.Size = new System.Drawing.Size(175, 34);
             this.HomeMenuStripViewTotalBy.Text = "Total By";
             // 
-            // HomeMenuStrupViewTotalByAccount
+            // HomeMenuStripViewTotalByAccount
             // 
-            this.HomeMenuStrupViewTotalByAccount.Name = "HomeMenuStrupViewTotalByAccount";
-            this.HomeMenuStrupViewTotalByAccount.Size = new System.Drawing.Size(186, 34);
-            this.HomeMenuStrupViewTotalByAccount.Text = "Account";
-            this.HomeMenuStrupViewTotalByAccount.Click += new System.EventHandler(this.HomeMenuStrupViewTotalByAccount_Click);
+            this.HomeMenuStripViewTotalByAccount.Name = "HomeMenuStripViewTotalByAccount";
+            this.HomeMenuStripViewTotalByAccount.Size = new System.Drawing.Size(186, 34);
+            this.HomeMenuStripViewTotalByAccount.Text = "Account";
+            this.HomeMenuStripViewTotalByAccount.Click += new System.EventHandler(this.HomeMenuStripViewTotalByAccount_Click);
             // 
             // HomeMenuStripViewTotalByCategory
             // 
@@ -226,9 +234,10 @@
         private ToolStripMenuItem HomeMenuStripViewTotalBy;
         private ToolStripMenuItem HomeMenuStripViewTotalByCategory;
         private ToolStripMenuItem HomeMenuStripViewTotalByName;
-        private ToolStripMenuItem HomeMenuStrupViewTotalByAccount;
-        private ToolStripMenuItem HomeMenuStrupInsertFromFileMonzo;
+        private ToolStripMenuItem HomeMenuStripViewTotalByAccount;
+        private ToolStripMenuItem HomeMenuStripInsertFromFileMonzo;
         private ToolStripMenuItem HomeMenuStripQuery;
         private ToolStripMenuItem HomeMenuStripExport;
+        private ToolStripMenuItem HomeMenuStripInsertFromFileLloydsCredit;
     }
 }
