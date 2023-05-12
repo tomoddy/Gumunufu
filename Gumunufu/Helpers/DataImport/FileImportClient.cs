@@ -51,6 +51,42 @@ namespace Gumunufu.Helpers.DataImport
             }
         }
 
+
+        internal static List<Transaction> LloydsCreditImport(string path, string accountName)
+        {
+            try
+            {
+                // Read file and remove first line
+                List<Transaction> retVal = new();
+                List<string> lines = File.ReadAllLines(path).ToList();
+                lines.RemoveAt(0);
+
+                // Add cells to line
+                foreach (string line in lines)
+                {
+                    // Get cells and parse currency values
+                    List<string> cells = line.Split(',').ToList();
+
+                    // Add transaction to list
+                    retVal.Add(new Transaction
+                    {
+                        Account = accountName,
+                        Date = DateTime.Parse(cells[0]),
+                        Name = cells[3],
+                        Amount = -float.Parse(cells[4])
+                    });
+                }
+
+                // Return list
+                return retVal;
+            }
+            catch (Exception ex)
+            {
+                // Throw generic exception
+                throw new FileImportException(Resource.Message.IMPORT_ERROR, ex);
+            }
+        }
+
         /// <summary>
         /// Import from monzo bank statement
         /// </summary>

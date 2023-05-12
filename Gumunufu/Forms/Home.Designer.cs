@@ -33,8 +33,8 @@
             this.HomeMenuStripInsert = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFile = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFileLloyds = new System.Windows.Forms.ToolStripMenuItem();
-            this.HomeMenuStripInsertFromFileMonzo = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertFromFileLloydsCredit = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuStripInsertFromFileMonzo = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripInsertManual = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripCategorise = new System.Windows.Forms.ToolStripMenuItem();
             this.HomeMenuStripView = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,33 +100,34 @@
             this.HomeMenuStripInsertFromFileLloydsCredit,
             this.HomeMenuStripInsertFromFileMonzo});
             this.HomeMenuStripInsertFromFile.Name = "HomeMenuStripInsertFromFile";
-            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(187, 34);
+            this.HomeMenuStripInsertFromFile.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripInsertFromFile.Text = "From File";
             // 
             // HomeMenuStripInsertFromFileLloyds
             // 
             this.HomeMenuStripInsertFromFileLloyds.Name = "HomeMenuStripInsertFromFileLloyds";
-            this.HomeMenuStripInsertFromFileLloyds.Size = new System.Drawing.Size(170, 34);
+            this.HomeMenuStripInsertFromFileLloyds.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripInsertFromFileLloyds.Text = "Lloyds";
             this.HomeMenuStripInsertFromFileLloyds.Click += new System.EventHandler(this.HomeMenuStripInsertFromFileLloyds_Click);
-            // 
-            // HomeMenuStripInsertFromFileMonzo
-            // 
-            this.HomeMenuStripInsertFromFileMonzo.Name = "HomeMenuStripInsertFromFileMonzo";
-            this.HomeMenuStripInsertFromFileMonzo.Size = new System.Drawing.Size(170, 34);
-            this.HomeMenuStripInsertFromFileMonzo.Text = "Monzo";
-            this.HomeMenuStripInsertFromFileMonzo.Click += new System.EventHandler(this.HomeMenuStripInsertFromFileMonzo_Click);
             // 
             // HomeMenuStripInsertFromFileLloydsCredit
             // 
             this.HomeMenuStripInsertFromFileLloydsCredit.Name = "HomeMenuStripInsertFromFileLloydsCredit";
-            this.HomeMenuStripInsertFromFileLloydsCredit.Size = new System.Drawing.Size(217, 34);
+            this.HomeMenuStripInsertFromFileLloydsCredit.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripInsertFromFileLloydsCredit.Text = "Lloyds Credit";
+            this.HomeMenuStripInsertFromFileLloydsCredit.Click += new System.EventHandler(this.HomeMenuStripInsertFromFileLloydsCredit_Click);
+            // 
+            // HomeMenuStripInsertFromFileMonzo
+            // 
+            this.HomeMenuStripInsertFromFileMonzo.Name = "HomeMenuStripInsertFromFileMonzo";
+            this.HomeMenuStripInsertFromFileMonzo.Size = new System.Drawing.Size(270, 34);
+            this.HomeMenuStripInsertFromFileMonzo.Text = "Monzo";
+            this.HomeMenuStripInsertFromFileMonzo.Click += new System.EventHandler(this.HomeMenuStripInsertFromFileMonzo_Click);
             // 
             // HomeMenuStripInsertManual
             // 
             this.HomeMenuStripInsertManual.Name = "HomeMenuStripInsertManual";
-            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(187, 34);
+            this.HomeMenuStripInsertManual.Size = new System.Drawing.Size(270, 34);
             this.HomeMenuStripInsertManual.Text = "Manual";
             this.HomeMenuStripInsertManual.Click += new System.EventHandler(this.HomeMenuStripInsertManual_Click);
             // 

@@ -158,6 +158,33 @@ namespace Gumunufu.Forms
             }
         }
 
+
+        private void HomeMenuStripInsertFromFileLloydsCredit_Click(object sender, EventArgs e)
+        {
+            // Create and show open file dialog
+            OpenFileDialog fileDialog = new() { Filter = Resource.Argument.CSV_FILTER };
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Create dialog to get account name
+                AccountInput accountInput = new();
+                if (accountInput.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Try to import data
+                        TransactionSet.Transactions.AddRange(FileImportClient.LloydsCreditImport(fileDialog.FileName, accountInput.AccountName));
+                        Client.UpdateTransactions(TransactionSet);
+                        Home_Load(sender, e);
+                    }
+                    catch (FileImportException ex)
+                    {
+                        // Show error message
+                        MessageBox.Show(Resource.Message.ImportError(ex), Resource.Message.IMPORT_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Insert from monzo file click event
         /// </summary>
